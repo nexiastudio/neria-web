@@ -511,11 +511,31 @@ const Comparison = () => (
           <span className="accent">Neria</span> vs. Humano
         </h2>
       </div>
+      <style>{`
+        .cmp-header{display:grid;grid-template-columns:1.3fr 1fr 1fr;border-bottom:1px solid var(--border)}
+        .cmp-row{display:grid;grid-template-columns:1.3fr 1fr 1fr}
+        .cmp-cell{padding:18px 28px}
+        @media(max-width:600px){
+          .cmp-header{grid-template-columns:1fr 1fr;border-bottom:none}
+          .cmp-header-feat{display:none}
+          .cmp-row{grid-template-columns:1fr;border-bottom:none}
+          .cmp-cell{padding:12px 16px;font-size:13px}
+          .cmp-feat{font-weight:600;font-size:12px;color:var(--muted);padding-bottom:4px;border-bottom:1px solid var(--border)}
+          .cmp-humano,.cmp-neria{padding-top:8px}
+          .cmp-row-wrap{border-bottom:1px solid var(--border);padding:12px 16px}
+          .cmp-row-wrap:last-child{border-bottom:none}
+          .cmp-col-label{font-size:9px;font-family:'Space Mono',monospace;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+          .cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+          .cmp-col-human{color:var(--muted)}
+          .cmp-col-neria{background:oklch(0.55 0.25 300 / 0.06);border-radius:8px;padding:6px 10px}
+        }
+      `}</style>
       <div className="gcard" style={{overflow:'hidden',borderRadius:20}}>
-        <div style={{display:'grid',gridTemplateColumns:'1.3fr 1fr 1fr',borderBottom:'1px solid var(--border)'}}>
+        {/* Desktop header */}
+        <div className="cmp-header">
           {['','Humano','Neria'].map((h,i)=>(
-            <div key={i} style={{
-              padding:'18px 28px',fontSize:11,fontFamily:'Space Mono',
+            <div key={i} className={`cmp-cell${i===0?' cmp-header-feat':''}`} style={{
+              fontSize:11,fontFamily:'Space Mono',
               letterSpacing:'0.12em',textTransform:'uppercase',
               color:i===2?'var(--orange)':'var(--muted)',
               borderRight:i<2?'1px solid var(--border)':'none',
@@ -524,22 +544,51 @@ const Comparison = () => (
             }}>{h}</div>
           ))}
         </div>
+        {/* Desktop rows / Mobile cards */}
         {rows.map((r,i)=>(
-          <div key={i} style={{
-            display:'grid',gridTemplateColumns:'1.3fr 1fr 1fr',
-            borderBottom:i<rows.length-1?'1px solid var(--border)':'none',
-            background:i%2===0?'transparent':'oklch(0.20 0.15 298 / 0.1)',
-          }}>
-            <div style={{padding:'18px 28px',fontSize:13.5,fontWeight:500,borderRight:'1px solid var(--border)'}}>{r.f}</div>
-            <div style={{padding:'18px 28px',fontSize:13,color:'var(--muted)',display:'flex',alignItems:'center',gap:10,borderRight:'1px solid var(--border)',fontWeight:300}}>
-              <IconXmark/>{r.h}
+          <React.Fragment key={i}>
+            {/* Desktop */}
+            <div className="cmp-row" style={{
+              borderBottom:i<rows.length-1?'1px solid var(--border)':'none',
+              background:i%2===0?'transparent':'oklch(0.20 0.15 298 / 0.1)',
+              display:'var(--cmp-desktop-display,grid)',
+            }}>
+              <div className="cmp-cell" style={{fontSize:13.5,fontWeight:500,borderRight:'1px solid var(--border)'}}>{r.f}</div>
+              <div className="cmp-cell" style={{fontSize:13,color:'var(--muted)',display:'flex',alignItems:'center',gap:10,borderRight:'1px solid var(--border)',fontWeight:300}}>
+                <IconXmark/>{r.h}
+              </div>
+              <div className="cmp-cell" style={{fontSize:13,display:'flex',alignItems:'center',gap:10,background:'oklch(0.55 0.25 300 / 0.06)',fontWeight:500}}>
+                <IconCheck/>{r.n}
+              </div>
             </div>
-            <div style={{padding:'18px 28px',fontSize:13,display:'flex',alignItems:'center',gap:10,background:'oklch(0.55 0.25 300 / 0.06)',fontWeight:500}}>
-              <IconCheck/>{r.n}
+            {/* Mobile card */}
+            <div className="cmp-row-wrap" style={{display:'none'}}>
+              <div className="cmp-feat">{r.f}</div>
+              <div className="cmp-cols">
+                <div>
+                  <div className="cmp-col-label" style={{color:'var(--muted)'}}>Humano</div>
+                  <div className="cmp-col-human" style={{fontSize:12,display:'flex',alignItems:'center',gap:6,fontWeight:300}}>
+                    <IconXmark/>{r.h}
+                  </div>
+                </div>
+                <div className="cmp-col-neria">
+                  <div className="cmp-col-label" style={{color:'var(--orange)'}}>Neria</div>
+                  <div style={{fontSize:12,display:'flex',alignItems:'center',gap:6,fontWeight:500}}>
+                    <IconCheck/>{r.n}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </React.Fragment>
         ))}
       </div>
+      <style>{`
+        @media(max-width:600px){
+          .cmp-row{display:none!important}
+          .cmp-row-wrap{display:block!important}
+          .cmp-header{display:grid!important;grid-template-columns:1fr 1fr}
+        }
+      `}</style>
     </div>
   </section>
 );
@@ -602,7 +651,7 @@ const Pricing = ({ctaLabel}) => (
           <div style={{fontSize:11,fontFamily:'Space Mono',letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--muted)',marginBottom:20,fontWeight:600}}>Plan básico</div>
           <div style={{fontSize:14,color:'rgba(255,255,255,0.25)',textDecoration:'line-through',marginBottom:6}}>$150 USD/mes</div>
           <div style={{display:'flex',alignItems:'baseline',gap:8,marginBottom:10}}>
-            <span className="accent" style={{fontSize:64,fontWeight:700,lineHeight:1,letterSpacing:'-0.03em'}}>$80<span style={{fontSize:36,position:'relative',top:'-16px'}}>99</span></span>
+            <span className="accent" style={{fontSize:64,fontWeight:700,lineHeight:1,letterSpacing:'-0.03em'}}>$80</span>
             <span style={{fontSize:16,color:'var(--muted)',fontWeight:300}}>USD/mes</span>
           </div>
           <p style={{fontSize:13.5,color:'var(--muted)',marginBottom:36,lineHeight:1.65,fontWeight:300}}>Todo lo que necesitas para que tu negocio nunca más pierda un cliente.</p>
