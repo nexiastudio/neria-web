@@ -32,8 +32,6 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-
-/* NAV */
 nav{
   position:sticky;top:0;z-index:100;
   background:rgba(10,6,20,0.7);
@@ -61,46 +59,22 @@ nav{
   cursor:pointer;text-decoration:none;transition:all .25s;
 }
 .btn-ghost:hover{background:rgba(180,130,255,0.15);border-color:var(--pink)}
-
-/* STARS CANVAS */
 canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
-
-/* LAYOUT */
 .wrap{max-width:860px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
-
-/* HERO */
-.hero{
-  padding:80px 0 60px;
-  text-align:center;
-  position:relative;z-index:1;
-}
+.hero{padding:80px 0 60px;text-align:center;position:relative;z-index:1;}
 .label{
   font-family:'Space Mono',monospace;font-size:11px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--orange);display:inline-block;margin-bottom:20px;
 }
-.hero h1{
-  font-size:clamp(32px,5vw,52px);font-weight:800;
-  line-height:1.1;margin-bottom:16px;letter-spacing:-0.02em;
-}
+.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px;letter-spacing:-0.02em;}
 .accent{
   background:linear-gradient(135deg,var(--pink) 0%,var(--violet) 60%,var(--orange) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hero-meta{
-  font-size:14px;color:var(--dim);font-family:'Space Mono',monospace;
-  margin-top:8px;
-}
-.hero-divider{
-  width:60px;height:2px;margin:32px auto 0;
-  background:linear-gradient(90deg,var(--pink),var(--violet));
-  border-radius:2px;
-}
-
-/* CONTENT */
+.hero-meta{font-size:14px;color:var(--dim);font-family:'Space Mono',monospace;margin-top:8px;}
+.hero-divider{width:60px;height:2px;margin:32px auto 0;background:linear-gradient(90deg,var(--pink),var(--violet));border-radius:2px;}
 .content{padding:20px 0 100px}
-
-/* SECTION CARD */
 .tyc-section{
   background:var(--card-bg);
   border:1px solid var(--border);
@@ -112,22 +86,14 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
   transition:border-color .3s;
 }
 .tyc-section:hover{border-color:var(--border-hi)}
-
 .section-num{
   font-family:'Space Mono',monospace;font-size:10px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--orange);display:block;margin-bottom:10px;
 }
-.tyc-section h2{
-  font-size:18px;font-weight:700;color:var(--text);
-  margin-bottom:20px;letter-spacing:-0.01em;
-}
-.tyc-section p{
-  font-size:14px;color:var(--muted);line-height:1.75;
-}
-.tyc-section ul{
-  list-style:none;display:flex;flex-direction:column;gap:10px;
-}
+.tyc-section h2{font-size:18px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.01em;}
+.tyc-section p{font-size:14px;color:var(--muted);line-height:1.75;}
+.tyc-section ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
 .tyc-section ul li{
   font-size:14px;color:var(--muted);line-height:1.65;
   padding-left:22px;position:relative;
@@ -138,14 +104,7 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
   background:linear-gradient(135deg,var(--pink),var(--violet));
 }
 .tyc-section ul li strong{color:var(--text)}
-
-/* SUBLABEL */
-.sublabel{
-  font-size:13px;font-weight:600;color:var(--text);
-  margin:20px 0 10px;display:block;
-}
-
-/* TABLE */
+.sublabel{font-size:13px;font-weight:600;color:var(--text);margin:20px 0 10px;display:block;}
 .tyc-table{width:100%;border-collapse:collapse;margin-top:8px}
 .tyc-table th{
   background:linear-gradient(135deg,var(--pink-hot),var(--violet));
@@ -156,17 +115,11 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
 .tyc-table th:last-child{border-radius:0 10px 0 0}
 .tyc-table td{
   padding:12px 16px;font-size:13px;color:var(--muted);
-  border-bottom:1px solid var(--border);line-height:1.6;
-  vertical-align:top;
+  border-bottom:1px solid var(--border);line-height:1.6;vertical-align:top;
 }
 .tyc-table tr:last-child td{border-bottom:none}
 .tyc-table tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
-.tyc-table td:first-child{
-  color:var(--text);font-weight:500;white-space:nowrap;
-  min-width:180px;
-}
-
-/* NOTE */
+.tyc-table td:first-child{color:var(--text);font-weight:500;white-space:nowrap;min-width:180px;}
 .note{
   background:rgba(180,130,255,0.06);
   border:1px solid var(--border);
@@ -176,18 +129,10 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
   font-size:13px;color:var(--muted);line-height:1.65;
 }
 .note strong{color:var(--text)}
-
-/* FOOTER */
-footer{
-  border-top:1px solid var(--border);
-  padding:40px 0;
-  text-align:center;
-  position:relative;z-index:1;
-}
+footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;position:relative;z-index:1;}
 footer p{font-size:13px;color:var(--dim)}
 footer a{color:var(--muted);text-decoration:none;transition:color .2s}
 footer a:hover{color:var(--pink)}
-
 @media(max-width:768px){
   .wrap{padding:0 20px}
   .tyc-section{padding:24px 20px}
@@ -200,7 +145,6 @@ footer a:hover{color:var(--pink)}
 
 <canvas id="stars"></canvas>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a class="logo" href="index.html">
@@ -211,7 +155,6 @@ footer a:hover{color:var(--pink)}
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="wrap">
   <div class="hero">
     <span class="label">Nexia Studio · Abril 2026</span>
@@ -220,7 +163,6 @@ footer a:hover{color:var(--pink)}
     <div class="hero-divider"></div>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
 
     <!-- 1 -->
@@ -252,6 +194,9 @@ footer a:hover{color:var(--pink)}
         <li>Modificación directa de turno</li>
         <li>Escala al humano cuando detecta algo fuera de su alcance</li>
       </ul>
+      <div class="note">
+        <strong>Nota sobre inteligencia artificial:</strong> Las respuestas de Neria son generadas de forma automática por un sistema de inteligencia artificial. Si bien el sistema está diseñado para ser preciso y confiable, Nexia Studio no garantiza que todas las respuestas sean perfectas en el 100% de los casos. El negocio contratante es responsable de supervisar el funcionamiento del servicio y de intervenir manualmente cuando lo considere necesario.
+      </div>
     </div>
 
     <!-- 3 -->
@@ -335,13 +280,73 @@ footer a:hover{color:var(--pink)}
         <li>No reemplaza decisiones humanas en situaciones complejas; escala al equipo del negocio cuando es necesario</li>
         <li>El funcionamiento depende de que el cliente mantenga activa su cuenta de WhatsApp Business con Meta</li>
         <li>Neria no garantiza disponibilidad continua ante fallas de Meta o proveedores externos</li>
-        <li>Meta tiene sus propias políticas de uso para WhatsApp Business. Neria actúa también como vigilante de estas normas y <strong>puede suspender el servicio si detecta que el cliente las está incumpliendo</strong>, sin derecho a devolución en ese caso</li>
+        <li>Meta tiene sus propias políticas de uso para WhatsApp Business. Neria monitorea el cumplimiento de estas normas y <strong>puede suspender el servicio si detecta que el cliente las está incumpliendo</strong>, sin derecho a devolución en ese caso</li>
       </ul>
     </div>
 
-    <!-- 8 -->
+    <!-- 8 — NUEVO: Uso Aceptable -->
     <div class="tyc-section">
       <span class="section-num">Sección 08</span>
+      <h2>Uso Aceptable del Servicio</h2>
+      <p>Neria está diseñada exclusivamente para la gestión y atención organizada de clientes de un negocio de servicios. Queda expresamente prohibido:</p>
+      <ul>
+        <li>Utilizar Neria para el envío masivo de mensajes no solicitados (spam)</li>
+        <li>Usar el servicio para contactar personas que no hayan iniciado una conversación o no tengan una relación comercial previa con el negocio</li>
+        <li>Emplear Neria con fines publicitarios masivos, campañas de marketing no autorizadas o cualquier uso que viole las políticas de WhatsApp Business</li>
+        <li>Usar el servicio para actividades ilegales, engañosas o que perjudiquen a los usuarios finales</li>
+      </ul>
+      <div class="note">
+        El incumplimiento de esta sección habilita a Nexia Studio a suspender el servicio de forma inmediata y sin devolución.
+      </div>
+    </div>
+
+    <!-- 9 — NUEVO: Soporte -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 09</span>
+      <h2>Soporte y Atención al Cliente</h2>
+      <ul>
+        <li><strong>Canal de soporte:</strong> WhatsApp — el contacto se entrega una vez activado el servicio</li>
+        <li><strong>Horario de atención:</strong> lunes a viernes en horario comercial</li>
+        <li><strong>Tiempo de respuesta:</strong> hasta 48 horas hábiles desde la consulta</li>
+        <li><strong>Urgencias:</strong> el cliente recibe un número de contacto directo para situaciones críticas, disponible una vez contratado el servicio</li>
+      </ul>
+      <div class="note">
+        Nexia Studio no garantiza resolución inmediata en todos los casos, especialmente cuando el problema depende de plataformas externas como Meta o WhatsApp.
+      </div>
+    </div>
+
+    <!-- 10 — NUEVO: Cancelación por parte de Neria -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 10</span>
+      <h2>Cancelación por Parte de Nexia Studio</h2>
+      <ul>
+        <li>Nexia Studio se reserva el derecho de discontinuar el servicio con un mínimo de <strong>30 días de aviso previo</strong> al cliente, notificado por WhatsApp o correo electrónico</li>
+        <li>En caso de cancelación por parte de Nexia Studio sin causa imputable al cliente, se reintegrará de forma proporcional el monto del mes en curso no utilizado</li>
+        <li>En caso de cancelación por incumplimiento de los Términos y Condiciones por parte del cliente (uso indebido, violación de políticas de Meta, etc.), no habrá devolución</li>
+      </ul>
+    </div>
+
+    <!-- 11 — NUEVO: Responsabilidad por datos correctos -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 11</span>
+      <h2>Responsabilidad por Información Proporcionada</h2>
+      <ul>
+        <li>El correcto funcionamiento de Neria depende de que el cliente proporcione información precisa y actualizada sobre su negocio: horarios, servicios, empleados, preguntas previas y cualquier otro dato de configuración</li>
+        <li>Si Neria responde de forma incorrecta o incompleta debido a información errónea o desactualizada proporcionada por el cliente, Nexia Studio no será responsable por los inconvenientes que esto genere</li>
+        <li>El cliente es responsable de notificar a Nexia Studio cualquier cambio en la información de su negocio que pueda afectar el funcionamiento del servicio</li>
+      </ul>
+    </div>
+
+    <!-- 12 — NUEVO: Menores de edad -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 12</span>
+      <h2>Menores de Edad</h2>
+      <p>En los casos en que los clientes finales del negocio contratante sean menores de edad (pacientes pediátricos, alumnos, etc.), es responsabilidad exclusiva del negocio contratante obtener el consentimiento correspondiente de sus tutores o representantes legales para el registro y tratamiento de sus datos. Nexia Studio no interviene en dicho proceso y no asume ninguna responsabilidad al respecto.</p>
+    </div>
+
+    <!-- 13 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 13</span>
       <h2>Propiedad de los Datos</h2>
       <ul>
         <li>Los datos del negocio y sus clientes son propiedad del cliente</li>
@@ -350,9 +355,9 @@ footer a:hover{color:var(--pink)}
       </ul>
     </div>
 
-    <!-- 9 -->
+    <!-- 14 -->
     <div class="tyc-section">
-      <span class="section-num">Sección 09</span>
+      <span class="section-num">Sección 14</span>
       <h2>Privacidad</h2>
       <ul>
         <li>Los datos de los usuarios finales (pacientes, clientes del negocio) se utilizan exclusivamente para el funcionamiento del servicio de agendamiento</li>
@@ -360,16 +365,16 @@ footer a:hover{color:var(--pink)}
       </ul>
     </div>
 
-    <!-- 10 -->
+    <!-- 15 -->
     <div class="tyc-section">
-      <span class="section-num">Sección 10</span>
+      <span class="section-num">Sección 15</span>
       <h2>Modificaciones al Servicio</h2>
       <p>Nexia Studio puede modificar precios o funcionalidades del servicio con un mínimo de <strong>30 días de aviso previo</strong> al cliente, notificado por WhatsApp o correo electrónico.</p>
     </div>
 
-    <!-- 11 -->
+    <!-- 16 -->
     <div class="tyc-section">
-      <span class="section-num">Sección 11</span>
+      <span class="section-num">Sección 16</span>
       <h2>Limitación de Responsabilidad</h2>
       <ul>
         <li>Nexia Studio no se hace responsable por pérdidas del negocio derivadas de fallas del servicio, interrupciones de Meta/WhatsApp, o causas fuera de su control</li>
@@ -377,9 +382,9 @@ footer a:hover{color:var(--pink)}
       </ul>
     </div>
 
-    <!-- 12 -->
+    <!-- 17 -->
     <div class="tyc-section">
-      <span class="section-num">Sección 12</span>
+      <span class="section-num">Sección 17</span>
       <h2>Ley Aplicable</h2>
       <p>El presente contrato se rige bajo la legislación de la <strong>República Argentina</strong>, independientemente del país de residencia del cliente.</p>
     </div>
@@ -387,53 +392,33 @@ footer a:hover{color:var(--pink)}
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p>Nexia Studio © 2026 &nbsp;·&nbsp; <a href="index.html">neria.app</a> &nbsp;·&nbsp; <a href="mailto:samuel@nexiastudio.net">samuel@nexiastudio.net</a></p>
 </footer>
 
 <script>
-// Stars animation (same as landing)
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 let stars = [];
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function initStars() {
-  stars = [];
-  for (let i = 0; i < 120; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.2 + 0.3,
-      o: Math.random() * 0.6 + 0.1,
-      s: Math.random() * 0.3 + 0.05,
-      d: Math.random() > 0.5 ? 1 : -1
-    });
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+function initStars(){
+  stars=[];
+  for(let i=0;i<120;i++){
+    stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+0.3,o:Math.random()*0.6+0.1,s:Math.random()*0.3+0.05,d:Math.random()>0.5?1:-1});
   }
 }
-
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  stars.forEach(s => {
-    s.o += s.s * 0.01 * s.d;
-    if (s.o > 0.7 || s.o < 0.1) s.d *= -1;
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${s.o})`;
-    ctx.fill();
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s=>{
+    s.o+=s.s*0.01*s.d;
+    if(s.o>0.7||s.o<0.1)s.d*=-1;
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${s.o})`;ctx.fill();
   });
   requestAnimationFrame(drawStars);
 }
-
-resize();
-initStars();
-drawStars();
-window.addEventListener('resize', () => { resize(); initStars(); });
+resize();initStars();drawStars();
+window.addEventListener('resize',()=>{resize();initStars()});
 </script>
 
 </body>
