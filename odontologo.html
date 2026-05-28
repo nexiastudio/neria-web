@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Neria para Odontólogos — Secretaria IA por WhatsApp 24/7</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23ee2563'/><stop offset='100%25' stop-color='%238b3cf7'/></linearGradient></defs><rect width='36' height='36' rx='10' fill='url(%23g)'/><text x='18' y='26' font-family='Arial Black, sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'>N</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f7fb;
+  --bg2:#ffffff;
+  --teal:#0c6b82;
+  --teal-mid:#0e8aa6;
+  --teal-light:#e0f4f8;
+  --teal-dim:#c5e8f0;
+  --pink:oklch(0.72 0.22 350);
+  --pink-hot:oklch(0.68 0.28 8);
+  --violet:oklch(0.55 0.25 300);
+  --orange:oklch(0.60 0.16 50);
+  --text:#0f172a;
+  --muted:#64748b;
+  --dim:#94a3b8;
+  --border:rgba(12,107,130,0.12);
+  --border-hi:rgba(12,107,130,0.25);
+  --card-bg:#ffffff;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(12,107,130,0.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:16px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+section{padding:100px 0;position:relative}
+.accent{background:linear-gradient(135deg,var(--pink) 0%,var(--violet) 60%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gcard{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;position:relative;transition:all .3s;box-shadow:var(--shadow)}
+.gcard:hover{border-color:var(--border-hi);transform:translateY(-3px);box-shadow:0 8px 32px rgba(12,107,130,0.13)}
+.btn-glow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--orange),var(--pink-hot) 60%,var(--violet));
+  color:#ffffff !important;font-family:'Poppins',sans-serif;
+  font-size:14px;font-weight:600;padding:14px 32px;
+  border-radius:100px;border:none;cursor:pointer;
+  text-decoration:none;transition:all .25s;
+  box-shadow:0 4px 24px oklch(0.68 0.28 8 / 0.35);
+  letter-spacing:0.01em;position:relative;z-index:2;
+}
+.btn-glow:hover{box-shadow:0 8px 40px oklch(0.68 0.28 8 / 0.55);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;padding:13px 26px;border-radius:100px;border:1.5px solid var(--teal-dim);cursor:pointer;text-decoration:none;transition:all .25s}
+.btn-ghost:hover{background:var(--teal-light);border-color:var(--teal)}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,247,251,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--pink-hot),var(--violet));display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px oklch(0.55 0.25 300 / 0.35)}
+.logo-text{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;font-weight:400}
+.nav-links a:hover{color:var(--text)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;color:var(--text);padding:8px;align-items:center;justify-content:center}
+.mobile-menu{display:none;position:absolute;top:72px;left:0;right:0;background:rgba(245,247,251,0.98);backdrop-filter:blur(20px);padding:16px 24px 20px;border-bottom:1px solid var(--border);z-index:99;flex-direction:column}
+.mobile-menu a{font-size:15px;color:var(--text);text-decoration:none;padding:14px 4px;border-bottom:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){
+  .nav-btn-txt{display:none}
+  .nav-links .btn-glow{padding:9px 11px !important;gap:0 !important}
+}
+@media(max-width:768px){
+  .nav-links a:not(.btn-glow){display:none}
+  .nav-links .btn-glow{font-size:11px !important;padding:8px 12px !important;gap:5px !important}
+  .nav-links .btn-glow svg{width:13px;height:13px;flex-shrink:0}
+  .hamburger{display:flex}
+  .wrap{padding:0 20px}
+  section{padding:60px 0}
+  .hero-grid{grid-template-columns:1fr !important;grid-template-areas:"label" "phone" "text" !important;gap:24px !important;padding:32px 20px 48px !important}
+  .hero-grid > div[style*="phone"]{justify-content:center}
+  .stats-grid{grid-template-columns:1fr !important}
+  .feat-grid{grid-template-columns:1fr !important}
+  table{font-size:12px}
+  table td,table th{padding:12px 14px !important}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel">
+
+const IconWA = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+);
+
+const IconCheck = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{flexShrink:0}}>
+    <defs>
+      <linearGradient id="chk-g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="oklch(0.72 0.22 350)"/>
+        <stop offset="100%" stopColor="oklch(0.72 0.18 50)"/>
+      </linearGradient>
+    </defs>
+    <circle cx="9" cy="9" r="9" fill="url(#chk-g)" opacity="0.15"/>
+    <path d="M5 9.5l2.5 2.5 5-5" stroke="url(#chk-g)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconX = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{flexShrink:0}}>
+    <circle cx="9" cy="9" r="9" fill="rgba(180,100,100,0.1)"/>
+    <path d="M6 6l6 6M12 6l-6 6" stroke="rgba(200,80,80,0.7)" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+/* ── NAV ── */
+const Nav = () => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <nav>
+      <div className="nav-inner">
+        <a href="#" className="logo">
+          <div className="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <text x="11" y="17" textAnchor="middle" fontSize="15" fontWeight="900" fill="white" fontFamily="Arial Black, sans-serif">N</text>
+            </svg>
+          </div>
+          <span className="logo-text">soyNer<span style={{background:'linear-gradient(135deg,oklch(0.72 0.22 350),oklch(0.55 0.25 300))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>IA</span></span>
+        </a>
+        <div className="nav-links">
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#precios">Precios</a>
+          <a href="https://wa.me/5491100000000" className="btn-glow" style={{fontSize:13,padding:'10px 22px',color:'#ffffff'}}>
+            <IconWA/> <span className="nav-btn-txt">Hablar con Neria</span>
+          </a>
+        </div>
+        <button className="hamburger" onClick={()=>setOpen(o=>!o)}>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="8" width="20" height="2" rx="1" fill="currentColor"/>
+            <rect x="4" y="13" width="20" height="2" rx="1" fill="currentColor"/>
+            <rect x="4" y="18" width="20" height="2" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <div className={`mobile-menu${open?' open':''}`}>
+        <a href="#como-funciona" onClick={()=>setOpen(false)}>Cómo funciona</a>
+        <a href="#funcionalidades" onClick={()=>setOpen(false)}>Funcionalidades</a>
+        <a href="#precios" onClick={()=>setOpen(false)}>Precios</a>
+        <a href="https://wa.me/5491100000000" className="btn-glow" style={{marginTop:12,justifyContent:'center',color:'#ffffff'}} onClick={()=>setOpen(false)}>
+          <IconWA/> Hablar con Neria
+        </a>
+      </div>
+    </nav>
+  );
+};
+
+/* ── PHONE MOCKUP ANIMADO ── */
+const MSGS = [
+  {from:'patient', name:'Valentina R.', text:'Hola, quería sacar turno para limpieza el viernes a la tarde 🙏', time:'21:14'},
+  {from:'neria', text:'¡Hola Valentina! Tenemos disponible el viernes 30 a las 15:00 hs con el Dr. Méndez. ¿Te confirmo ese horario?', time:'21:14'},
+  {from:'patient', text:'Sí, perfecto!', time:'21:15'},
+  {from:'neria', text:'✅ ¡Listo! Turno confirmado:\n\n📅 Viernes 30 · 15:00 hs\n🦷 Limpieza dental\n👨‍⚕️ Dr. Méndez\n\nTe recuerdo el jueves. ¡Hasta entonces!', time:'21:15'},
+];
+
+const DELAYS = [800, 2200, 4800, 6200];
+const TYPING_BEFORE = [false, true, false, true];
+const RESET_AFTER = 10000;
+
+const PhoneMockup = () => {
+  const [visible, setVisible] = React.useState(0);
+  const [typing, setTyping] = React.useState(false);
+  const chatRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [visible, typing]);
+
+  React.useEffect(() => {
+    let timers = [];
+    let reset;
+
+    const run = () => {
+      setVisible(0);
+      setTyping(false);
+      MSGS.forEach((m, i) => {
+        if (TYPING_BEFORE[i]) {
+          timers.push(setTimeout(() => setTyping(true), DELAYS[i] - 900));
+        }
+        timers.push(setTimeout(() => {
+          setTyping(false);
+          setVisible(v => v + 1);
+        }, DELAYS[i]));
+      });
+      reset = setTimeout(() => { timers.forEach(clearTimeout); run(); }, RESET_AFTER);
+    };
+
+    run();
+    return () => { timers.forEach(clearTimeout); clearTimeout(reset); };
+  }, []);
+
+  return (
+    <div style={{background:'#1a1a2e',borderRadius:38,padding:'3px',boxShadow:'0 32px 80px rgba(0,0,0,0.22),0 0 0 1px rgba(255,255,255,0.06)',width:270,flexShrink:0}}>
+      <div style={{background:'#f0f0f0',borderRadius:35,overflow:'hidden'}}>
+        <div style={{background:'#128c7e',padding:'12px 14px',display:'flex',alignItems:'center',gap:10}}>
+          <div style={{width:38,height:38,borderRadius:'50%',background:'linear-gradient(135deg,oklch(0.68 0.28 8),oklch(0.55 0.25 300))',display:'flex',alignItems:'center',justifyContent:'center',color:'white',fontWeight:700,fontSize:14,flexShrink:0}}>N</div>
+          <div style={{flex:1}}>
+            <div style={{color:'white',fontSize:13,fontWeight:600,lineHeight:1.2}}>Neria · Consultorio</div>
+            <div style={{color:'rgba(255,255,255,0.72)',fontSize:11}}>en línea ahora</div>
+          </div>
+          <div style={{width:8,height:8,background:'#4ade80',borderRadius:'50%'}}/>
+        </div>
+        <div ref={chatRef} style={{background:'#e5ddd5',padding:'10px',display:'flex',flexDirection:'column',gap:8,height:520,overflowY:'auto',scrollBehavior:'smooth'}}>
+          {MSGS.slice(0, visible).map((m, i) => (
+            <div key={i} style={{display:'flex',flexDirection:'column',alignSelf:m.from==='patient'?'flex-start':'flex-end',maxWidth:'85%',animation:'msgIn 0.3s ease'}}>
+              {m.from==='patient' && <span style={{fontSize:10,color:'#0c6b82',fontWeight:600,marginBottom:2,paddingLeft:2}}>{m.name}</span>}
+              <div style={{background:m.from==='patient'?'white':'#d9fdd3',borderRadius:m.from==='patient'?'8px 8px 8px 2px':'8px 8px 2px 8px',padding:'7px 10px',fontSize:11.5,lineHeight:1.5,color:'#111',whiteSpace:'pre-line'}}>
+                {m.text}
+                <div style={{fontSize:9.5,color:'rgba(0,0,0,0.38)',textAlign:'right',marginTop:3}}>{m.time}{m.from==='neria'&&' ✓✓'}</div>
+              </div>
+            </div>
+          ))}
+          {typing && (
+            <div style={{display:'flex',gap:4,alignItems:'center',background:'white',borderRadius:'8px 8px 8px 2px',padding:'8px 12px',width:'fit-content',alignSelf:'flex-start',animation:'msgIn 0.2s ease'}}>
+              {[0,200,400].map(d=>(
+                <div key={d} style={{width:6,height:6,background:'#aaa',borderRadius:'50%',animation:`bounce 1.2s ${d}ms infinite`}}/>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ── HERO ── */
+const Hero = () => (
+  <div style={{background:'var(--bg2)',borderBottom:'1px solid var(--border)'}}>
+    <div style={{display:'grid',gridTemplateColumns:'minmax(0,1fr) auto',gridTemplateAreas:'"label phone" "text phone"',gap:'20px 80px',alignItems:'center',padding:'80px 40px',maxWidth:1200,margin:'0 auto',position:'relative'}} className="hero-grid">
+      <div style={{position:'absolute',right:0,top:'50%',transform:'translateY(-50%)',width:360,height:360,borderRadius:'50%',background:'radial-gradient(circle, rgba(12,107,130,0.08) 0%, transparent 70%)',pointerEvents:'none',zIndex:0}}/>
+      <div style={{gridArea:'label',position:'relative',zIndex:1}}>
+        <span className="label">Para odontólogos · WhatsApp · 24/7</span>
+      </div>
+      <div style={{gridArea:'phone',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',zIndex:1}}>
+        <PhoneMockup/>
+      </div>
+      <div style={{gridArea:'text',position:'relative',zIndex:1}}>
+        <h1 style={{fontSize:'clamp(2.2rem,4.5vw,3.6rem)',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1.1,marginBottom:20}}>
+          Tu consultorio nunca más<br/><span className="accent">pierde un turno.</span>
+        </h1>
+        <p style={{color:'var(--muted)',fontSize:16,lineHeight:1.75,maxWidth:500,marginBottom:32,fontWeight:300}}>
+          Neria atiende el WhatsApp de tu clínica dental las 24 horas. Agenda, confirma, recuerda y cancela turnos — sin que vos ni tu secretaria toquen el teléfono.
+        </p>
+        <div style={{display:'flex',gap:14,flexWrap:'wrap',alignItems:'center'}}>
+          <a href="https://wa.me/5491100000000" className="btn-glow" style={{color:'#ffffff'}}>
+            <IconWA/> Pedí tu demo gratis
+          </a>
+          <a href="#como-funciona" className="btn-ghost">Ver cómo funciona →</a>
+        </div>
+        <div style={{marginTop:28,display:'flex',gap:24,flexWrap:'wrap'}}>
+          {['Sin instalación','Listo en menos de 48 hs','Soporte en español'].map((t,i)=>(
+            <div key={i} style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'var(--muted)'}}>
+              <div style={{width:6,height:6,borderRadius:'50%',background:'var(--teal)',opacity:0.7}}/>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+/* ── STATS ── */
+const Stats = () => (
+  <div style={{background:'var(--teal)',padding:'48px 40px'}}>
+    <div style={{maxWidth:900,margin:'0 auto',display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:32,textAlign:'center'}}>
+      {[
+        {n:'40%', l:'menos ausencias con recordatorios automáticos'},
+        {n:'24/7', l:'disponible para tus pacientes a cualquier hora'},
+        {n:'< 3 seg', l:'lo que tarda Neria en responder a un mensaje'},
+      ].map((s,i)=>(
+        <div key={i}>
+          <div style={{fontFamily:'Poppins',fontSize:'2.8rem',fontWeight:800,color:'white',letterSpacing:'-0.03em',lineHeight:1}}>{s.n}</div>
+          <div style={{color:'rgba(255,255,255,0.7)',fontSize:13,marginTop:8,lineHeight:1.5}}>{s.l}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+/* ── PAIN ── */
+const Pain = () => (
+  <section style={{background:'var(--bg2)'}}>
+    <div className="wrap">
+      <div style={{marginBottom:56,textAlign:'center'}}>
+        <span className="label">El problema que conocés bien</span>
+        <h2 style={{fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.02em'}}>¿Te suena <span className="accent">familiar?</span></h2>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',gap:20}}>
+        {[
+          {icon:'👻',t:'El turno fantasma',d:'El paciente reservó, nunca avisó que no venía. La silla vacía es plata que no entra.'},
+          {icon:'📱',t:'El WhatsApp interminable',d:'Tu recepcionista pasa la mitad del día respondiendo "¿tienen turno el jueves?" en lugar de atender el consultorio.'},
+          {icon:'🌙',t:'Consultas fuera de horario',d:'El paciente escribe a las 10 PM, nadie responde, y el martes ya sacó turno con la competencia.'},
+        ].map((p,i)=>(
+          <div key={i} className="gcard" style={{padding:'32px 28px'}}>
+            <div style={{fontSize:'2rem',marginBottom:16}}>{p.icon}</div>
+            <div style={{width:28,height:2,background:'linear-gradient(90deg,var(--teal),var(--teal-mid))',borderRadius:1,marginBottom:16}}/>
+            <h3 style={{fontSize:'1rem',fontWeight:600,marginBottom:10}}>{p.t}</h3>
+            <p style={{fontSize:13.5,color:'var(--muted)',lineHeight:1.7,fontWeight:300}}>{p.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ── HOW IT WORKS ── */
+const steps = [
+  {n:'01',t:'El paciente escribe por WhatsApp',d:'A cualquier hora. Neria responde al instante sin esperas. Ni el paciente descarga nada, ni vos instalás nada.'},
+  {n:'02',t:'Neria agenda el turno',d:'Pregunta el servicio, verifica disponibilidad real contra tu agenda y confirma la reserva en la misma conversación.'},
+  {n:'03',t:'Recordatorio automático',d:'El día anterior, Neria le avisa al paciente. Menos ausencias, sin seguimiento manual.'},
+  {n:'04',t:'Vos lo ves todo desde el panel',d:'Calendario en tiempo real, historial de pacientes, reportes. Desde cualquier dispositivo.'},
+];
+
+const HowItWorks = () => (
+  <section id="como-funciona" style={{background:'var(--bg)'}}>
+    <div className="wrap">
+      <div style={{marginBottom:56}}>
+        <span className="label">Simple y automático</span>
+        <h2 style={{fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.02em'}}>Cómo funciona <span className="accent">Neria</span></h2>
+        <p style={{color:'var(--muted)',fontSize:15,marginTop:12,maxWidth:500,fontWeight:300}}>Cuatro pasos. Sin configuraciones complejas.</p>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:20}}>
+        {steps.map((s,i)=>(
+          <div key={i} className="gcard" style={{padding:'36px 28px',background:'var(--bg2)'}}>
+            <div style={{fontSize:56,fontWeight:700,lineHeight:1,marginBottom:20,background:'linear-gradient(135deg,rgba(12,107,130,0.3),rgba(12,107,130,0.06))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',fontFamily:'Poppins',letterSpacing:'-0.03em'}}>{s.n}</div>
+            <div style={{width:32,height:2,background:'linear-gradient(90deg,var(--orange),var(--pink),var(--violet))',borderRadius:1,marginBottom:16}}/>
+            <h3 style={{fontSize:'1rem',fontWeight:600,marginBottom:10,lineHeight:1.4}}>{s.t}</h3>
+            <p style={{fontSize:13.5,color:'var(--muted)',lineHeight:1.7,fontWeight:300}}>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ── FEATURES ── */
+const feats = [
+  {icon:'📅',t:'Agendamiento de turnos',d:'El paciente escribe como le sale. Neria entiende y agenda contra tu disponibilidad real.'},
+  {icon:'❌',t:'Cancelación de turnos',d:'El paciente cancela por WhatsApp. Neria libera el horario y actualiza el calendario.'},
+  {icon:'💬',t:'Respuesta a consultas',d:'Horarios, servicios, precios. Neria responde con datos reales de tu configuración.'},
+  {icon:'🎭',t:'Adaptación al tono del negocio',d:'Formal, amigable, profesional. Vos definís cómo habla Neria con tus pacientes.'},
+  {icon:'❓',t:'Preguntas previas al turno',d:'Obra social, primera consulta, alergias. Configurás qué pregunta antes de confirmar.'},
+  {icon:'📋',t:'Expediente por cliente',d:'Historial completo de cada paciente: turnos, servicios, notas. Todo en el panel.'},
+  {icon:'🗓️',t:'Vista de calendario',d:'Agenda visual en tiempo real. Ves todos los turnos del día, semana o mes.'},
+  {icon:'📄',t:'Exportación en PDF',d:'Expediente del paciente exportable en un clic. Para vos o para el paciente.'},
+  {icon:'✏️',t:'Modificación directa de turno',d:'El paciente pide cambiar horario. Neria gestiona el cambio sin intervención.'},
+  {icon:'🤝',t:'Neria + humano conviven',d:'Si tu secretaria responde desde el teléfono, Neria se hace a un lado y retoma sola.'},
+];
+
+const Features = () => (
+  <section id="funcionalidades" style={{background:'var(--bg2)'}}>
+    <div className="wrap">
+      <div style={{marginBottom:56,textAlign:'center'}}>
+        <span className="label">Todo lo que necesitás</span>
+        <h2 style={{fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.02em'}}>Sin instalar nada. <span className="accent">Solo WhatsApp.</span></h2>
+        <p style={{color:'var(--muted)',fontSize:15,marginTop:12,maxWidth:480,margin:'12px auto 0',fontWeight:300}}>Tus pacientes no descargan nada. Neria vive donde ellos ya están.</p>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:18}}>
+        {feats.map((f,i)=>(
+          <div key={i} className="gcard" style={{padding:'24px 22px',display:'flex',gap:14,alignItems:'flex-start'}}>
+            <div style={{fontSize:'1.4rem',flexShrink:0,marginTop:2}}>{f.icon}</div>
+            <div>
+              <h3 style={{fontSize:'0.9rem',fontWeight:600,marginBottom:4,lineHeight:1.3}}>{f.t}</h3>
+              <p style={{fontSize:12.5,color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>{f.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ── COMPARISON ── */
+const rows = [
+  {f:'Disponibilidad',h:'Lun–Vie, horario laboral',n:'24 hs, 7 días'},
+  {f:'Respuesta inmediata',h:'No siempre',n:'Siempre (en segundos)'},
+  {f:'Recordatorios de turno',h:'Manual o no se hace',n:'Automático'},
+  {f:'Historial del paciente',h:'Depende de quién atiende',n:'Automático en el panel'},
+  {f:'Consultas fuera de horario',h:'Se pierden',n:'Respondidas al instante'},
+  {f:'Días libres / ausencias',h:'Sí afectan',n:'Nunca afectan'},
+];
+
+const Comparison = () => (
+  <section style={{background:'var(--bg)'}}>
+    <div className="wrap">
+      <div style={{marginBottom:56}}>
+        <span className="label">La diferencia es clara</span>
+        <h2 style={{fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.02em'}}>Neria vs. <span className="accent">lo que tenés hoy</span></h2>
+      </div>
+      <div className="gcard" style={{overflow:'hidden',background:'var(--bg2)'}}>
+        <table style={{width:'100%',borderCollapse:'collapse'}}>
+          <thead>
+            <tr style={{background:'var(--bg)'}}>
+              <th style={{padding:'16px 24px',textAlign:'left',fontSize:12,fontWeight:600,color:'var(--muted)',letterSpacing:'0.06em',textTransform:'uppercase',borderBottom:'1px solid var(--border)'}}>Situación</th>
+              <th style={{padding:'16px 24px',textAlign:'center',fontSize:12,fontWeight:600,color:'var(--muted)',letterSpacing:'0.06em',textTransform:'uppercase',borderBottom:'1px solid var(--border)'}}>Sin Neria</th>
+              <th style={{padding:'16px 24px',textAlign:'center',fontSize:12,fontWeight:600,background:'linear-gradient(135deg,oklch(0.72 0.22 350 / 0.08),oklch(0.55 0.25 300 / 0.08))',letterSpacing:'0.06em',textTransform:'uppercase',borderBottom:'1px solid var(--border)'}}>
+                <span className="accent">Con Neria</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r,i)=>(
+              <tr key={i} style={{borderBottom:i<rows.length-1?'1px solid var(--border)':undefined}}>
+                <td style={{padding:'16px 24px',fontSize:14,fontWeight:500}}>{r.f}</td>
+                <td style={{padding:'16px 24px',textAlign:'center'}}>
+                  <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:8}}>
+                    <IconX/><span style={{fontSize:13,color:'var(--muted)',fontWeight:300}}>{r.h}</span>
+                  </div>
+                </td>
+                <td style={{padding:'16px 24px',textAlign:'center',background:'linear-gradient(135deg,oklch(0.72 0.22 350 / 0.04),oklch(0.55 0.25 300 / 0.04))'}}>
+                  <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:8}}>
+                    <IconCheck/><span style={{fontSize:13,fontWeight:500}}>{r.n}</span>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── INTEGRATIONS ── */
+const Integrations = () => (
+  <section style={{background:'var(--bg2)',borderTop:'1px solid var(--border)'}}>
+    <div className="wrap">
+      <div style={{marginBottom:48,textAlign:'center'}}>
+        <span className="label">Conectado con lo que ya usás</span>
+        <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:700,letterSpacing:'-0.02em'}}>Se integra con tus <span className="accent">herramientas</span></h2>
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))',gap:16,maxWidth:800,margin:'0 auto'}}>
+        {[
+          {icon:'📅',name:'Google Calendar',desc:'Turnos sincronizados automáticamente',live:true},
+          {icon:'📊',name:'Google Sheets',desc:'Registro de pacientes exportado',live:true},
+          {icon:'✉️',name:'Gmail',desc:'Notificaciones por email',live:true},
+          {icon:'💳',name:'Mercado Pago',desc:'Cobros integrados',live:false},
+        ].map((int,i)=>(
+          <div key={i} className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,opacity:int.live?1:0.6}}>
+            <div style={{fontSize:'1.8rem',flexShrink:0}}>{int.icon}</div>
+            <div>
+              <div style={{fontSize:14,fontWeight:600,display:'flex',alignItems:'center',gap:8}}>
+                {int.name}
+                {!int.live && <span style={{fontSize:9,fontFamily:'Space Mono',background:'var(--teal-light)',border:'1px solid var(--teal-dim)',borderRadius:100,padding:'2px 7px',color:'var(--teal)',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>PRONTO</span>}
+              </div>
+              <div style={{fontSize:11.5,color:'var(--muted)',marginTop:2}}>{int.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ── PRICING ── */
+const planFeatures = [
+  '📅 Agendamiento de turnos',
+  '❌ Cancelación de turnos',
+  '💬 Respuesta a consultas',
+  '🎭 Adaptación al tono del negocio',
+  '❓ Preguntas previas al turno',
+  '📋 Expediente por cliente',
+  '🗓️ Vista de calendario',
+  '📄 Exportación de expediente en PDF',
+  '✏️ Modificación directa de turno',
+  '🤝 Escala al humano cuando detecta algo fuera de su alcance',
+];
+
+const Pricing = () => (
+  <section id="precios" style={{background:'var(--bg)'}}>
+    <div className="wrap" style={{textAlign:'center'}}>
+      <span className="label">Precio transparente</span>
+      <h2 style={{fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:12}}>
+        Simple. <span className="accent">Sin sorpresas.</span>
+      </h2>
+      <p style={{color:'var(--muted)',maxWidth:460,margin:'0 auto 48px',fontWeight:300,lineHeight:1.7}}>
+        Suscripción mensual. Sin contrato de permanencia. Cancelás cuando querés.
+      </p>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:24,maxWidth:720,margin:'0 auto'}}>
+
+        {/* Setup card */}
+        <div className="gcard" style={{padding:'40px 32px',background:'var(--bg2)',textAlign:'center'}}>
+          <div style={{fontSize:11,fontFamily:'Space Mono',letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--muted)',marginBottom:12}}>Instalación única</div>
+          <p style={{fontSize:12.5,color:'var(--muted)',fontWeight:300,marginBottom:16,lineHeight:1.5}}>Configuración completa + videollamada de onboarding</p>
+          <div style={{marginBottom:6}}>
+            <span style={{fontSize:18,color:'var(--dim)',textDecoration:'line-through',fontWeight:400}}>$350 USD</span>
+          </div>
+          <div style={{display:'flex',alignItems:'baseline',justifyContent:'center',gap:4,marginBottom:16}}>
+            <span style={{fontSize:16,fontWeight:600,color:'var(--text)'}}>$</span>
+            <span style={{fontSize:'3.2rem',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1,color:'var(--text)'}}>150</span>
+            <span style={{fontSize:15,fontWeight:400,color:'var(--muted)'}}>USD</span>
+          </div>
+          <div style={{background:'linear-gradient(135deg,oklch(0.72 0.22 350 / 0.1),oklch(0.55 0.25 300 / 0.1))',borderRadius:100,padding:'5px 16px',display:'inline-block'}}>
+            <span className="accent" style={{fontSize:11,fontWeight:600,fontFamily:'Space Mono',letterSpacing:'0.06em'}}>PRECIO DE LANZAMIENTO</span>
+          </div>
+        </div>
+
+        {/* Monthly plan */}
+        <div className="gcard" style={{padding:'40px 32px',background:'var(--bg2)',textAlign:'left',border:'2px solid var(--border-hi)'}}>
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}}>
+            <div style={{fontSize:11,fontFamily:'Space Mono',letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--teal)'}}>Plan Lanzamiento</div>
+            <div style={{background:'linear-gradient(135deg,oklch(0.72 0.22 350 / 0.1),oklch(0.55 0.25 300 / 0.1))',borderRadius:100,padding:'3px 10px'}}>
+              <span className="accent" style={{fontSize:10,fontWeight:600,fontFamily:'Space Mono',letterSpacing:'0.04em'}}>OFERTA</span>
+            </div>
+          </div>
+          <div style={{textAlign:'center',marginBottom:16}}>
+            <div style={{marginBottom:4}}>
+              <span style={{fontSize:16,color:'var(--dim)',textDecoration:'line-through',fontWeight:400}}>$150 USD/mes</span>
+            </div>
+            <div style={{display:'flex',alignItems:'baseline',justifyContent:'center',gap:4}}>
+              <span style={{fontSize:16,fontWeight:600,color:'var(--text)'}}>$</span>
+              <span style={{fontSize:'3.2rem',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1,color:'var(--text)'}}>80</span>
+              <span style={{fontSize:15,fontWeight:400,color:'var(--muted)'}}>USD/mes</span>
+            </div>
+          </div>
+          <div style={{borderTop:'1px solid var(--border)',paddingTop:20,marginBottom:24}}>
+            {planFeatures.map((f,i)=>(
+              <div key={i} style={{display:'flex',alignItems:'center',gap:8,fontSize:13,fontWeight:400,padding:'5px 0',borderBottom:i<planFeatures.length-1?'1px solid rgba(12,107,130,0.06)':undefined}}>
+                <span style={{fontSize:14}}>{f.split(' ')[0]}</span>
+                <span>{f.split(' ').slice(1).join(' ')}</span>
+              </div>
+            ))}
+          </div>
+          <a href="https://wa.me/5491100000000" className="btn-glow" style={{width:'100%',justifyContent:'center',fontSize:14,color:'#ffffff'}}>
+            <IconWA/> Pedí tu demo gratis
+          </a>
+          <p style={{fontSize:11,color:'var(--dim)',marginTop:14,textAlign:'center'}}>Demo gratuita · Sin tarjeta de crédito</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+);
+
+/* ── FINAL CTA ── */
+const FinalCTA = () => (
+  <section style={{background:'linear-gradient(135deg, #0a0614 0%, #150929 100%)',padding:'100px 0',textAlign:'center',position:'relative',overflow:'hidden'}}>
+    <div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)',width:600,height:300,background:'radial-gradient(ellipse, rgba(238,37,99,0.12) 0%, transparent 70%)',pointerEvents:'none'}}/>
+    <div className="wrap" style={{position:'relative',zIndex:1}}>
+      <span style={{fontFamily:'Space Mono',fontSize:11,letterSpacing:'0.14em',textTransform:'uppercase',color:'oklch(0.72 0.22 350)',display:'block',marginBottom:16}}>Tu consultorio te está esperando</span>
+      <h2 style={{fontSize:'clamp(2rem,4.5vw,3.4rem)',fontWeight:800,letterSpacing:'-0.03em',color:'white',lineHeight:1.15,marginBottom:20}}>
+        Empezá a recuperar<br/>los turnos que <span className="accent">perdés hoy.</span>
+      </h2>
+      <p style={{color:'rgba(255,255,255,0.55)',fontSize:15,marginBottom:40,fontWeight:300,maxWidth:480,margin:'0 auto 40px'}}>
+        Demo gratuita, sin compromiso. En 20 minutos te mostramos cómo Neria encaja en tu clínica.
+      </p>
+      <a href="https://wa.me/5491100000000" className="btn-glow" style={{fontSize:15,padding:'16px 40px',color:'#ffffff'}}>
+        <IconWA/> Pedí tu demo gratis →
+      </a>
+      <div style={{marginTop:20,color:'rgba(255,255,255,0.3)',fontSize:12}}>Sin tarjeta de crédito · Respuesta en menos de 24 hs</div>
+    </div>
+  </section>
+);
+
+/* ── FOOTER ── */
+const Footer = () => (
+  <footer style={{background:'#0a0614',borderTop:'1px solid rgba(180,130,255,0.1)',padding:'32px 40px'}}>
+    <div style={{maxWidth:1200,margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12}}>
+      <div style={{display:'flex',alignItems:'center',gap:10}}>
+        <div style={{width:28,height:28,borderRadius:7,background:'linear-gradient(135deg,oklch(0.68 0.28 8),oklch(0.55 0.25 300))',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <span style={{color:'white',fontSize:12,fontWeight:900}}>N</span>
+        </div>
+        <span style={{color:'rgba(255,255,255,0.6)',fontSize:13,fontFamily:'Poppins'}}>soyNerIA · Para odontólogos</span>
+      </div>
+      <div style={{color:'rgba(255,255,255,0.3)',fontSize:12}}>© 2026 Nexia Studio · samuel@nexiastudio.net</div>
+    </div>
+  </footer>
+);
+
+const App = () => (
+  <>
+    <Nav/>
+    <Hero/>
+    <Stats/>
+    <Pain/>
+    <HowItWorks/>
+    <Features/>
+    <Comparison/>
+    <Integrations/>
+    <Pricing/>
+    <FinalCTA/>
+    <Footer/>
+  </>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
