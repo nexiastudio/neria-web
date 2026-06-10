@@ -276,6 +276,35 @@ const Hero = () => (
   </div>
 );
 
+/* ── VIDEO ── */
+const VideoSection = () => (
+  <section style={{background:'var(--bg)',borderTop:'1px solid var(--border)'}}>
+    <div className="wrap" style={{textAlign:'center'}}>
+      <span className="label" style={{display:'block'}}>Conocé a Neria en 1 minuto</span>
+      <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:40,lineHeight:1.15}}>
+        Mirá cómo <span className="accent">trabaja Neria</span> en tu consultorio
+      </h2>
+      <div style={{
+        maxWidth:900,margin:'0 auto',borderRadius:24,overflow:'hidden',
+        border:'1px solid var(--border-hi)',
+        boxShadow:'0 12px 48px rgba(12,107,130,0.18)',
+        background:'#000',
+        aspectRatio:'16 / 9',
+      }}>
+        <video
+          src="video_neria_odontologo.mp4"
+          controls
+          playsInline
+          preload="metadata"
+          style={{width:'100%',height:'100%',display:'block',objectFit:'contain'}}
+        >
+          Tu navegador no soporta video HTML5.
+        </video>
+      </div>
+    </div>
+  </section>
+);
+
 /* ── STATS ── */
 const Stats = () => (
   <div style={{background:'var(--teal)',padding:'48px 40px'}}>
@@ -503,9 +532,9 @@ const Pricing = () => (
             <span style={{fontSize:18,color:'var(--dim)',textDecoration:'line-through',fontWeight:400}}>$350 USD</span>
           </div>
           <div style={{display:'flex',alignItems:'baseline',justifyContent:'center',gap:4,marginBottom:16}}>
-            <span style={{fontSize:16,fontWeight:600,color:'var(--text)'}}>$</span>
-            <span style={{fontSize:'3.2rem',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1,color:'var(--text)'}}>150</span>
-            <span style={{fontSize:15,fontWeight:400,color:'var(--muted)'}}>USD</span>
+            
+            <span style={{fontSize:'3.2rem',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1,color:'var(--text)'}}>Sin costo</span>
+            
           </div>
           <div style={{background:'linear-gradient(135deg,oklch(0.72 0.22 350 / 0.1),oklch(0.55 0.25 300 / 0.1))',borderRadius:100,padding:'5px 16px',display:'inline-block'}}>
             <span className="accent" style={{fontSize:11,fontWeight:600,fontFamily:'Space Mono',letterSpacing:'0.06em'}}>PRECIO DE LANZAMIENTO</span>
@@ -526,7 +555,7 @@ const Pricing = () => (
             </div>
             <div style={{display:'flex',alignItems:'baseline',justifyContent:'center',gap:4}}>
               <span style={{fontSize:16,fontWeight:600,color:'var(--text)'}}>$</span>
-              <span style={{fontSize:'3.2rem',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1,color:'var(--text)'}}>80</span>
+              <span style={{fontSize:'3.2rem',fontWeight:800,letterSpacing:'-0.03em',lineHeight:1,color:'var(--text)'}}>49.99</span>
               <span style={{fontSize:15,fontWeight:400,color:'var(--muted)'}}>USD/mes</span>
             </div>
           </div>
@@ -588,6 +617,7 @@ const App = () => (
   <>
     <Nav/>
     <Hero/>
+    <VideoSection/>
     <Stats/>
     <Pain/>
     <HowItWorks/>
