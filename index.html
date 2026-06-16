@@ -360,7 +360,7 @@ const Nav = ({ctaLabel}) => {
           <a href="#como-funciona">Cómo funciona</a>
           <a href="#rubros">Negocios</a>
           <a href="#precios">Precios</a>
-          <a href="#cta-final" className="btn-glow" style={{fontSize:13,padding:'11px 22px'}}>
+          <a href="https://wa.me/5491164858587" target="_blank" rel="noopener noreferrer" className="btn-glow" style={{fontSize:13,padding:'11px 22px'}}>
             <IconWA/>{ctaLabel}
           </a>
         </div>
@@ -381,33 +381,46 @@ const Nav = ({ctaLabel}) => {
 };
 
 /* ── HERO ── */
-const VideoSection = () => (
-  <section style={{padding:'100px 0',position:'relative',background:'linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)'}}>
-    <div className="wrap" style={{textAlign:'center'}}>
-      <span className="label">Conoce a Neria en 1 minuto</span>
-      <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:40,lineHeight:1.15}}>
-        Mira cómo <span className="accent">trabaja Neria</span> por ti
-      </h2>
-      <div style={{
-        maxWidth:900,margin:'0 auto',borderRadius:24,overflow:'hidden',
-        border:'1px solid var(--border-hi)',
-        boxShadow:'0 30px 80px rgba(120,60,200,0.35), 0 0 0 1px rgba(255,255,255,0.04) inset',
-        background:'#000',
-        aspectRatio:'16 / 9',
-      }}>
-        <video
-          src="Neria%20video%20para%20web.mp4"
-          controls
-          playsInline
-          preload="metadata"
-          style={{width:'100%',height:'100%',display:'block',objectFit:'contain'}}
-        >
-          Tu navegador no soporta video HTML5.
-        </video>
+const VideoSection = () => {
+  const videoRef = React.useRef(null);
+  React.useEffect(() => {
+    const v = videoRef.current;
+    if(!v) return;
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{ if(!e.isIntersecting && !v.paused){ v.pause(); } });
+    }, {threshold:0.5});
+    obs.observe(v);
+    return ()=>obs.disconnect();
+  }, []);
+  return (
+    <section style={{padding:'100px 0',position:'relative',background:'linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)'}}>
+      <div className="wrap" style={{textAlign:'center'}}>
+        <span className="label">Conoce a Neria en 1 minuto</span>
+        <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:40,lineHeight:1.15}}>
+          Mira cómo <span className="accent">trabaja Neria</span> por ti
+        </h2>
+        <div style={{
+          maxWidth:900,margin:'0 auto',borderRadius:24,overflow:'hidden',
+          border:'1px solid var(--border-hi)',
+          boxShadow:'0 30px 80px rgba(120,60,200,0.35), 0 0 0 1px rgba(255,255,255,0.04) inset',
+          background:'#000',
+          aspectRatio:'16 / 9',
+        }}>
+          <video
+            ref={videoRef}
+            src="Neria%20video%20para%20web.mp4"
+            controls
+            playsInline
+            preload="metadata"
+            style={{width:'100%',height:'100%',display:'block',objectFit:'contain'}}
+          >
+            Tu navegador no soporta video HTML5.
+          </video>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Hero = ({hl, ctaLabel, avatarSrc, avatarType, onAvatarClick}) => (
   <div style={{
@@ -820,50 +833,27 @@ const Integrations = () => (
       </div>
       <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))',gap:20,maxWidth:980,margin:'0 auto'}}>
 
+        {/* WhatsApp */}
+        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
+          <img src="logo-whatsapp.png" alt="WhatsApp" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
+          <div>
+            <div style={{fontSize:14,fontWeight:600,color:'var(--text)'}}>WhatsApp</div>
+            <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Canal de atención</div>
+          </div>
+        </div>
+
         {/* Google Calendar */}
         <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
-          <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <rect width="38" height="38" rx="7" fill="white"/>
-            <rect x="5" y="9" width="28" height="24" rx="3" fill="white" stroke="#DADCE0" strokeWidth="1.5"/>
-            <rect x="5" y="9" width="28" height="8" rx="3" fill="#1A73E8"/>
-            <rect x="5" y="14" width="28" height="3" fill="#1A73E8"/>
-            <text x="19" y="29" textAnchor="middle" fontSize="10" fontWeight="700" fill="#1A73E8" fontFamily="Poppins,sans-serif">19</text>
-            <rect x="10" y="6" width="3" height="7" rx="1.5" fill="#1A73E8"/>
-            <rect x="25" y="6" width="3" height="7" rx="1.5" fill="#1A73E8"/>
-          </svg>
+          <img src="logo-calendar.png" alt="Google Calendar" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
           <div>
             <div style={{fontSize:14,fontWeight:600,color:'var(--text)'}}>Google Calendar</div>
             <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Sincronización de turnos</div>
           </div>
         </div>
 
-        {/* Gmail */}
-        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
-          <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <rect width="38" height="38" rx="7" fill="white"/>
-            <path d="M6 12h26v18H6z" fill="white" stroke="#DADCE0" strokeWidth="1.5"/>
-            <path d="M6 12l13 10 13-10" stroke="#EA4335" strokeWidth="2" strokeLinecap="round" fill="none"/>
-            <path d="M6 12v18" stroke="#4285F4" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M32 12v18" stroke="#34A853" strokeWidth="2.5" strokeLinecap="round"/>
-          </svg>
-          <div>
-            <div style={{fontSize:14,fontWeight:600,color:'var(--text)'}}>Gmail</div>
-            <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Notificaciones por email</div>
-          </div>
-        </div>
-
         {/* Google Sheets */}
         <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
-          <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <rect width="38" height="38" rx="7" fill="#0F9D58"/>
-            <rect x="9" y="7" width="16" height="2" rx="1" fill="white" opacity="0.3"/>
-            <rect x="9" y="7" width="20" height="24" rx="2" fill="white" opacity="0.95"/>
-            <rect x="9" y="13" width="20" height="1.2" fill="#0F9D58" opacity="0.3"/>
-            <rect x="9" y="18" width="20" height="1.2" fill="#0F9D58" opacity="0.3"/>
-            <rect x="9" y="23" width="20" height="1.2" fill="#0F9D58" opacity="0.3"/>
-            <rect x="16" y="7" width="1.2" height="24" fill="#0F9D58" opacity="0.3"/>
-            <rect x="22" y="7" width="1.2" height="24" fill="#0F9D58" opacity="0.3"/>
-          </svg>
+          <img src="logo-sheets.png" alt="Google Sheets" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
           <div>
             <div style={{fontSize:14,fontWeight:600,color:'var(--text)'}}>Google Sheets</div>
             <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Registro de clientes</div>
@@ -872,16 +862,25 @@ const Integrations = () => (
 
         {/* Mercado Pago — próximamente */}
         <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%',opacity:0.6}}>
-          <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <rect width="38" height="38" rx="7" fill="#00AEEF"/>
-            <text x="19" y="25" textAnchor="middle" fontSize="13" fontWeight="700" fill="white" fontFamily="Poppins,sans-serif">MP</text>
-          </svg>
+          <img src="logo-mp.png" alt="Mercado Pago" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
           <div>
             <div style={{fontSize:14,fontWeight:600,color:'var(--text)',display:'flex',alignItems:'center',gap:8}}>
               Mercado Pago
               <span style={{fontSize:9,fontFamily:'Space Mono',background:'rgba(255,255,255,0.06)',border:'1px solid var(--border-hi)',borderRadius:100,padding:'2px 7px',color:'var(--orange)',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>PRONTO</span>
             </div>
             <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Cobros integrados</div>
+          </div>
+        </div>
+
+        {/* Instagram — próximamente */}
+        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%',opacity:0.6}}>
+          <img src="logo-ig.png" alt="Instagram" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
+          <div>
+            <div style={{fontSize:14,fontWeight:600,color:'var(--text)',display:'flex',alignItems:'center',gap:8}}>
+              Instagram
+              <span style={{fontSize:9,fontFamily:'Space Mono',background:'rgba(255,255,255,0.06)',border:'1px solid var(--border-hi)',borderRadius:100,padding:'2px 7px',color:'var(--orange)',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>PRONTO</span>
+            </div>
+            <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Mensajes y consultas</div>
           </div>
         </div>
 
