@@ -485,7 +485,7 @@ const Hero = ({hl, ctaLabel, avatarSrc, avatarType, onAvatarClick}) => (
 
 /* ── HOW IT WORKS ── */
 const steps = [
-  {n:'01', title:'Tu cliente escribe por WhatsApp', desc:'A cualquier hora. Neria responde al instante, sin esperas ni mensajes perdidos.'},
+  {n:'01', title:'Tu cliente escribe por WhatsApp o Instagram', desc:'A cualquier hora, por el canal que use. Neria atiende WhatsApp e Instagram al mismo tiempo, responde al instante y no se le escapa ningún mensaje.'},
   {n:'02', title:'Neria agenda el turno', desc:'Pregunta el servicio, verifica disponibilidad y confirma la reserva en la misma conversación.'},
   {n:'03', title:'Recordatorio automático', desc:'Antes del turno, Neria avisa al cliente. Menos ausencias, menos seguimiento manual.'},
   {n:'04', title:'Tú ves todo desde el panel', desc:'Calendario, expedientes, historial. Sin depender de nadie para que esté organizado.'},
@@ -670,6 +670,15 @@ const basicFeatures = [
   'Escala al humano cuando detecta algo fuera de su alcance',
 ];
 
+const newFeatures = [
+  'Envío de recordatorios automáticos',
+  'Multi-canal: WhatsApp + Instagram DM',
+  'Responde comentarios de Instagram — ideal para lanzamientos o promociones',
+  'Métricas de tu negocio — ideal para tomar mejores decisiones y ver qué está funcionando',
+  'Seguridad reforzada — datos protegidos y webhooks firmados',
+  'Entiende y envía audios — para que la conversación sea más cómoda y natural',
+];
+
 const Pricing = ({ctaLabel}) => (
   <section id="precios" style={{
     background:'radial-gradient(ellipse 80% 60% at 50% 40%, oklch(0.22 0.20 315 / 0.6), transparent 70%)',
@@ -724,6 +733,15 @@ const Pricing = ({ctaLabel}) => (
                 <IconCheck/><span>{f}</span>
               </div>
             ))}
+            <div style={{display:'flex',alignItems:'center',gap:10,margin:'8px 0 2px'}}>
+              <span style={{fontSize:11,fontFamily:'Space Mono',letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--orange)',fontWeight:700,whiteSpace:'nowrap'}}>✦ Nuevo — Mejoras recientes</span>
+              <span style={{flex:1,height:1,background:'linear-gradient(90deg,var(--orange),transparent)',opacity:0.5}}/>
+            </div>
+            {newFeatures.map(f=>(
+              <div key={f} style={{display:'flex',alignItems:'flex-start',gap:12,fontSize:14,color:'var(--text)',lineHeight:1.4,fontWeight:400}}>
+                <IconCheck/><span>{f}</span>
+              </div>
+            ))}
           </div>
           <a href="https://wa.me/5491164858587" className="btn-glow" style={{width:'100%',justifyContent:'center',padding:'16px 0',fontSize:15}}>
             <IconWA/>{ctaLabel}
@@ -739,7 +757,7 @@ const Pricing = ({ctaLabel}) => (
 
 /* ── TESTIMONIALS ── */
 const testimonials = [
-  {name:'Valentina G.',biz:'Salón de belleza, Buenos Aires',text:'Desde que tengo a Neria no pierdo ni un turno. Antes me la pasaba respondiendo WhatsApp a medianoche.'},
+  {name:'Dessire Cote',biz:'Farmacia, Buenos Aires',text:'Muy bueno, gracias chicos, hasta ahora anda re bien la automatización 🙂'},
   {name:'Dr. Marcos R.',biz:'Consultorio, Córdoba',text:'Mis pacientes me preguntan si contratamos una recepcionista nueva. No saben que es IA.'},
   {name:'Sofía L.',biz:'Centro de bienestar, Medellín',text:'En un día ya estaba funcionando. La instalación fue facilísima. Vale cada centavo.'},
 ];
@@ -842,6 +860,24 @@ const Integrations = () => (
           </div>
         </div>
 
+        {/* Instagram */}
+        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
+          <img src="logo-ig.png" alt="Instagram" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
+          <div>
+            <div style={{fontSize:14,fontWeight:600,color:'var(--text)'}}>Instagram</div>
+            <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Mensajes y comentarios</div>
+          </div>
+        </div>
+
+        {/* Gmail */}
+        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
+          <img src="logo Gmail.png" alt="Gmail" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
+          <div>
+            <div style={{fontSize:14,fontWeight:600,color:'var(--text)'}}>Gmail</div>
+            <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Notificaciones por correo</div>
+          </div>
+        </div>
+
         {/* Google Calendar */}
         <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
           <img src="logo-calendar.png" alt="Google Calendar" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
@@ -860,27 +896,15 @@ const Integrations = () => (
           </div>
         </div>
 
-        {/* Mercado Pago — próximamente */}
-        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%',opacity:0.6}}>
+        {/* Mercado Pago — opcional */}
+        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%'}}>
           <img src="logo-mp.png" alt="Mercado Pago" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
           <div>
             <div style={{fontSize:14,fontWeight:600,color:'var(--text)',display:'flex',alignItems:'center',gap:8}}>
               Mercado Pago
-              <span style={{fontSize:9,fontFamily:'Space Mono',background:'rgba(255,255,255,0.06)',border:'1px solid var(--border-hi)',borderRadius:100,padding:'2px 7px',color:'var(--orange)',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>PRONTO</span>
+              <span style={{fontSize:9,fontFamily:'Space Mono',background:'rgba(255,255,255,0.06)',border:'1px solid var(--border-hi)',borderRadius:100,padding:'2px 7px',color:'var(--orange)',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>OPCIONAL</span>
             </div>
             <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Cobros integrados</div>
-          </div>
-        </div>
-
-        {/* Instagram — próximamente */}
-        <div className="gcard" style={{padding:'22px 24px',display:'flex',alignItems:'center',gap:14,width:'100%',opacity:0.6}}>
-          <img src="logo-ig.png" alt="Instagram" width="38" height="38" style={{borderRadius:7,objectFit:'contain',flexShrink:0}}/>
-          <div>
-            <div style={{fontSize:14,fontWeight:600,color:'var(--text)',display:'flex',alignItems:'center',gap:8}}>
-              Instagram
-              <span style={{fontSize:9,fontFamily:'Space Mono',background:'rgba(255,255,255,0.06)',border:'1px solid var(--border-hi)',borderRadius:100,padding:'2px 7px',color:'var(--orange)',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>PRONTO</span>
-            </div>
-            <div style={{fontSize:11,color:'var(--muted)',marginTop:2}}>Mensajes y consultas</div>
           </div>
         </div>
 
