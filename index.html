@@ -579,7 +579,7 @@ const ForWhom = () => (
 /* ── COMPARISON ── */
 const rows = [
   {f:'Disponibilidad',h:'Lun–Vie, horario laboral',n:'24 hs, 7 días'},
-  {f:'Costo mensual',h:'$600–$1.200 USD',n:'$49.99 USD'},
+  {f:'Costo mensual',h:'$600–$1.200 USD',n:'$54.99 USD'},
   {f:'Respuesta inmediata',h:'No siempre',n:'Siempre'},
   {f:'Historial del cliente',h:'Depende del empleado',n:'Automático'},
   {f:'Recordatorios automáticos',h:'Manual',n:'Incluido'},
@@ -767,15 +767,19 @@ const Pricing = ({ctaLabel}) => (
           <a href="https://wa.me/5491164858587" className="btn-glow" style={{width:'100%',justifyContent:'center',padding:'16px 0',fontSize:15}}>
             <IconWA/>{ctaLabel}
           </a>
+          <p style={{fontSize:12.5,color:'var(--muted)',marginTop:16,textAlign:'center',fontWeight:400,lineHeight:1.5}}>
+  <span style={{color:'var(--orange)',fontWeight:600}}>Plan básico recomendado</span>{' '}
+  para negocios con ≤ 4 empleados
+</p>
         </div>
         <p style={{fontSize:11,color:'var(--muted)',marginTop:16,fontFamily:'Space Mono',letterSpacing:'0.04em',textAlign:'center'}}>
-          Sin permanencia · 7 días de garantía · Reactivación sin perder datos
+          Sin permanencia · 7 días de garantía · Reactivación sin perder datos 
         </p>
         <p style={{fontSize:12.5,color:'var(--muted)',marginTop:14,textAlign:'center',lineHeight:1.6,fontWeight:300}}>
           ¿Tu negocio maneja mayor volumen de mensajes o necesita más de una Neria?{' '}
           <a href="https://wa.me/5491164858587" style={{color:'var(--orange)',textDecoration:'none',fontWeight:500,borderBottom:'1px solid oklch(0.72 0.18 50 / 0.4)'}}>
             Consultá por planes ampliados
-          </a>{' '}— los armamos a la medida de tu operación.
+          </a>{' '}— los armamos a la medida de tu operación. 
         </p>
       </div>
     </div>
