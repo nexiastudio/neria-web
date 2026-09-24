@@ -32,6 +32,8 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
+
+/* NAV */
 nav{
   position:sticky;top:0;z-index:100;
   background:rgba(10,6,20,0.7);
@@ -59,22 +61,46 @@ nav{
   cursor:pointer;text-decoration:none;transition:all .25s;
 }
 .btn-ghost:hover{background:rgba(180,130,255,0.15);border-color:var(--pink)}
+
+/* STARS CANVAS */
 canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
+
+/* LAYOUT */
 .wrap{max-width:860px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
-.hero{padding:80px 0 60px;text-align:center;position:relative;z-index:1;}
+
+/* HERO */
+.hero{
+  padding:80px 0 60px;
+  text-align:center;
+  position:relative;z-index:1;
+}
 .label{
   font-family:'Space Mono',monospace;font-size:11px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--orange);display:inline-block;margin-bottom:20px;
 }
-.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;margin-bottom:16px;letter-spacing:-0.02em;}
+.hero h1{
+  font-size:clamp(32px,5vw,52px);font-weight:800;
+  line-height:1.1;margin-bottom:16px;letter-spacing:-0.02em;
+}
 .accent{
   background:linear-gradient(135deg,var(--pink) 0%,var(--violet) 60%,var(--orange) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hero-meta{font-size:14px;color:var(--dim);font-family:'Space Mono',monospace;margin-top:8px;}
-.hero-divider{width:60px;height:2px;margin:32px auto 0;background:linear-gradient(90deg,var(--pink),var(--violet));border-radius:2px;}
+.hero-meta{
+  font-size:14px;color:var(--dim);font-family:'Space Mono',monospace;
+  margin-top:8px;
+}
+.hero-divider{
+  width:60px;height:2px;margin:32px auto 0;
+  background:linear-gradient(90deg,var(--pink),var(--violet));
+  border-radius:2px;
+}
+
+/* CONTENT */
 .content{padding:20px 0 100px}
+
+/* SECTION CARD */
 .tyc-section{
   background:var(--card-bg);
   border:1px solid var(--border);
@@ -86,14 +112,25 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
   transition:border-color .3s;
 }
 .tyc-section:hover{border-color:var(--border-hi)}
+
 .section-num{
   font-family:'Space Mono',monospace;font-size:10px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--orange);display:block;margin-bottom:10px;
 }
-.tyc-section h2{font-size:18px;font-weight:700;color:var(--text);margin-bottom:20px;letter-spacing:-0.01em;}
-.tyc-section p{font-size:14px;color:var(--muted);line-height:1.75;}
-.tyc-section ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.tyc-section h2{
+  font-size:18px;font-weight:700;color:var(--text);
+  margin-bottom:20px;letter-spacing:-0.01em;
+}
+.tyc-section p{
+  font-size:14px;color:var(--muted);line-height:1.75;
+}
+.tyc-section p + p{margin-top:14px}
+.tyc-section a{color:var(--pink);text-decoration:none;border-bottom:1px solid rgba(200,150,255,0.3)}
+.tyc-section a:hover{color:var(--orange)}
+.tyc-section ul{
+  list-style:none;display:flex;flex-direction:column;gap:10px;
+}
 .tyc-section ul li{
   font-size:14px;color:var(--muted);line-height:1.65;
   padding-left:22px;position:relative;
@@ -104,7 +141,14 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
   background:linear-gradient(135deg,var(--pink),var(--violet));
 }
 .tyc-section ul li strong{color:var(--text)}
-.sublabel{font-size:13px;font-weight:600;color:var(--text);margin:20px 0 10px;display:block;}
+
+/* SUBLABEL */
+.sublabel{
+  font-size:13px;font-weight:600;color:var(--text);
+  margin:20px 0 10px;display:block;
+}
+
+/* TABLE */
 .tyc-table{width:100%;border-collapse:collapse;margin-top:8px}
 .tyc-table th{
   background:linear-gradient(135deg,var(--pink-hot),var(--violet));
@@ -115,11 +159,17 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
 .tyc-table th:last-child{border-radius:0 10px 0 0}
 .tyc-table td{
   padding:12px 16px;font-size:13px;color:var(--muted);
-  border-bottom:1px solid var(--border);line-height:1.6;vertical-align:top;
+  border-bottom:1px solid var(--border);line-height:1.6;
+  vertical-align:top;
 }
 .tyc-table tr:last-child td{border-bottom:none}
 .tyc-table tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
-.tyc-table td:first-child{color:var(--text);font-weight:500;white-space:nowrap;min-width:180px;}
+.tyc-table td:first-child{
+  color:var(--text);font-weight:500;white-space:nowrap;
+  min-width:180px;
+}
+
+/* NOTE */
 .note{
   background:rgba(180,130,255,0.06);
   border:1px solid var(--border);
@@ -129,10 +179,18 @@ canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
   font-size:13px;color:var(--muted);line-height:1.65;
 }
 .note strong{color:var(--text)}
-footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;position:relative;z-index:1;}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:40px 0;
+  text-align:center;
+  position:relative;z-index:1;
+}
 footer p{font-size:13px;color:var(--dim)}
 footer a{color:var(--muted);text-decoration:none;transition:color .2s}
 footer a:hover{color:var(--pink)}
+
 @media(max-width:768px){
   .wrap{padding:0 20px}
   .tyc-section{padding:24px 20px}
@@ -145,6 +203,7 @@ footer a:hover{color:var(--pink)}
 
 <canvas id="stars"></canvas>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a class="logo" href="index.html">
@@ -155,14 +214,16 @@ footer a:hover{color:var(--pink)}
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="wrap">
   <div class="hero">
-    <span class="label">Nexia Studio · Abril 2026</span>
+    <span class="label">Nexia Studio · Septiembre 2026</span>
     <h1>Términos y<br/><span class="accent">Condiciones</span></h1>
-    <p class="hero-meta">Última actualización: Abril 2026</p>
+    <p class="hero-meta">Última actualización: Septiembre 2026</p>
     <div class="hero-divider"></div>
   </div>
 
+  <!-- CONTENT -->
   <div class="content">
 
     <!-- 1 -->
@@ -170,32 +231,37 @@ footer a:hover{color:var(--pink)}
       <span class="section-num">Sección 01</span>
       <h2>Identificación de las Partes</h2>
       <ul>
-        <li><strong>Proveedor:</strong> Nexia Studio</li>
+        <li><strong>Proveedor:</strong> Nexia Studio — Samuel Torres, monotributista. Contacto: samuel@nexiastudio.net. Los datos fiscales completos (CUIT y domicilio) constan en la factura y se proporcionan al momento de la contratación.</li>
         <li><strong>Cliente:</strong> el negocio o profesional que contrata el servicio de Neria</li>
-        <li>El servicio se activa únicamente una vez realizado el pago de instalación y primer mes</li>
+        <li>El servicio se activa únicamente una vez realizado el pago de instalación (si corresponde) y del primer mes</li>
       </ul>
+      <div class="note">
+        <strong>Aceptación:</strong> al registrarse y utilizar el panel de Neria, el Cliente declara haber leído, comprendido y aceptado estos Términos y Condiciones y la <a href="privacidad.html">Política de Privacidad</a>. Si no está de acuerdo, no debe utilizar el servicio.
+      </div>
     </div>
 
     <!-- 2 -->
     <div class="tyc-section">
       <span class="section-num">Sección 02</span>
       <h2>Descripción del Servicio</h2>
-      <p>Neria es un agente virtual con inteligencia artificial que opera por WhatsApp, diseñado para gestionar turnos, responder consultas y atender a los clientes del negocio de forma automática.</p>
+      <p>Neria es un agente virtual con inteligencia artificial que opera por WhatsApp e Instagram, diseñado para gestionar turnos, responder consultas y atender a los clientes del negocio de forma automática.</p>
       <span class="sublabel">Funcionalidades incluidas:</span>
       <ul>
         <li>Agendamiento de turnos</li>
         <li>Cancelación de turnos</li>
+        <li>Modificación directa de turno</li>
         <li>Respuesta a consultas</li>
         <li>Adaptación al tono del negocio</li>
         <li>Preguntas previas al turno</li>
         <li>Expediente por cliente</li>
         <li>Vista de calendario</li>
         <li>Exportación de expediente en PDF</li>
-        <li>Modificación directa de turno</li>
+        <li>Atención multicanal: WhatsApp e Instagram (mensajes directos y comentarios)</li>
+        <li>Recordatorios automáticos y métricas del negocio</li>
         <li>Escala al humano cuando detecta algo fuera de su alcance</li>
       </ul>
       <div class="note">
-        <strong>Nota sobre inteligencia artificial:</strong> Las respuestas de Neria son generadas de forma automática por un sistema de inteligencia artificial. Si bien el sistema está diseñado para ser preciso y confiable, Nexia Studio no garantiza que todas las respuestas sean perfectas en el 100% de los casos. El negocio contratante es responsable de supervisar el funcionamiento del servicio y de intervenir manualmente cuando lo considere necesario.
+        <strong>Nota sobre inteligencia artificial:</strong> las respuestas de Neria son generadas de forma automática por un sistema de inteligencia artificial. Si bien el sistema está diseñado para ser preciso y confiable, Nexia Studio no garantiza que todas las respuestas sean perfectas en el 100% de los casos. El negocio contratante es responsable de supervisar el funcionamiento del servicio e intervenir manualmente cuando lo considere necesario.
       </div>
     </div>
 
@@ -203,7 +269,10 @@ footer a:hover{color:var(--pink)}
     <div class="tyc-section">
       <span class="section-num">Sección 03</span>
       <h2>Planes y Precios</h2>
-      <p><strong>Plan Básico: $80 USD/mes</strong> — incluye todas las funcionalidades listadas en la sección 2.</p>
+      <p><strong>Plan Básico: USD 54,99/mes</strong> (precio de lanzamiento; precio regular USD 150/mes) — incluye todas las funcionalidades listadas en la sección 2.</p>
+      <div class="note">
+        <strong>Precio de lanzamiento:</strong> los valores promocionales son válidos por tiempo limitado. Nexia Studio puede volver al precio regular con el aviso previo indicado en la sección "Modificaciones al Servicio".
+      </div>
     </div>
 
     <!-- 4 -->
@@ -211,8 +280,8 @@ footer a:hover{color:var(--pink)}
       <span class="section-num">Sección 04</span>
       <h2>Instalación (Setup Fee)</h2>
       <ul>
-        <li><strong>Precio de lanzamiento:</strong> $150 USD — cobro único, previo al inicio del onboarding</li>
-        <li><strong>Precio de referencia del mercado:</strong> $350 USD</li>
+        <li><strong>Precio de lanzamiento:</strong> bonificado — sin costo (cobro único, previo al inicio del onboarding)</li>
+        <li><strong>Precio regular de referencia:</strong> USD 350</li>
         <li><strong>Incluye:</strong> creación de usuario y contraseña, carga de datos del negocio, guía de activación Meta/WhatsApp, videollamada de configuración y demo</li>
       </ul>
     </div>
@@ -222,7 +291,7 @@ footer a:hover{color:var(--pink)}
       <span class="section-num">Sección 05</span>
       <h2>Cobros y Pagos</h2>
       <ul>
-        <li><strong>Frecuencia:</strong> mensual, cobro por adelantado</li>
+        <li><strong>Frecuencia:</strong> mensual, cobro por adelantado (se paga y se obtiene el servicio de ese mes)</li>
         <li><strong>Argentina:</strong> transferencia bancaria — Nexia Studio como monotributista, con emisión de factura C</li>
         <li><strong>Resto de Latinoamérica y otros países:</strong> método de pago a coordinar con el equipo en videollamada previa a la instalación</li>
         <li><strong>Permanencia:</strong> sin permanencia mínima — el cliente puede cancelar cuando quiera</li>
@@ -276,15 +345,15 @@ footer a:hover{color:var(--pink)}
       <span class="section-num">Sección 07</span>
       <h2>Alcance y Limitaciones del Servicio</h2>
       <ul>
-        <li>Neria opera exclusivamente por WhatsApp</li>
+        <li>Neria opera a través de WhatsApp e Instagram</li>
         <li>No reemplaza decisiones humanas en situaciones complejas; escala al equipo del negocio cuando es necesario</li>
-        <li>El funcionamiento depende de que el cliente mantenga activa su cuenta de WhatsApp Business con Meta</li>
+        <li>El funcionamiento depende de que el cliente mantenga activas sus cuentas de WhatsApp Business e Instagram con Meta</li>
         <li>Neria no garantiza disponibilidad continua ante fallas de Meta o proveedores externos</li>
-        <li>Meta tiene sus propias políticas de uso para WhatsApp Business. Neria monitorea el cumplimiento de estas normas y <strong>puede suspender el servicio si detecta que el cliente las está incumpliendo</strong>, sin derecho a devolución en ese caso</li>
+        <li>Meta tiene sus propias políticas de uso para WhatsApp Business e Instagram. Neria monitorea el cumplimiento de estas normas y <strong>puede suspender el servicio si detecta que el cliente las está incumpliendo</strong>, sin derecho a devolución en ese caso</li>
       </ul>
     </div>
 
-    <!-- 8 — NUEVO: Uso Aceptable -->
+    <!-- 8 -->
     <div class="tyc-section">
       <span class="section-num">Sección 08</span>
       <h2>Uso Aceptable del Servicio</h2>
@@ -292,15 +361,13 @@ footer a:hover{color:var(--pink)}
       <ul>
         <li>Utilizar Neria para el envío masivo de mensajes no solicitados (spam)</li>
         <li>Usar el servicio para contactar personas que no hayan iniciado una conversación o no tengan una relación comercial previa con el negocio</li>
-        <li>Emplear Neria con fines publicitarios masivos, campañas de marketing no autorizadas o cualquier uso que viole las políticas de WhatsApp Business</li>
+        <li>Emplear Neria con fines publicitarios masivos, campañas de marketing no autorizadas o cualquier uso que viole las políticas de WhatsApp Business o Instagram</li>
         <li>Usar el servicio para actividades ilegales, engañosas o que perjudiquen a los usuarios finales</li>
       </ul>
-      <div class="note">
-        El incumplimiento de esta sección habilita a Nexia Studio a suspender el servicio de forma inmediata y sin devolución.
-      </div>
+      <p>El incumplimiento de esta sección habilita a Nexia Studio a suspender el servicio de forma inmediata y sin devolución.</p>
     </div>
 
-    <!-- 9 — NUEVO: Soporte -->
+    <!-- 9 -->
     <div class="tyc-section">
       <span class="section-num">Sección 09</span>
       <h2>Soporte y Atención al Cliente</h2>
@@ -315,18 +382,18 @@ footer a:hover{color:var(--pink)}
       </div>
     </div>
 
-    <!-- 10 — NUEVO: Cancelación por parte de Neria -->
+    <!-- 10 -->
     <div class="tyc-section">
       <span class="section-num">Sección 10</span>
       <h2>Cancelación por Parte de Nexia Studio</h2>
       <ul>
-        <li>Nexia Studio se reserva el derecho de discontinuar el servicio con un mínimo de <strong>30 días de aviso previo</strong> al cliente, notificado por WhatsApp o correo electrónico</li>
+        <li>Nexia Studio se reserva el derecho de discontinuar el servicio con un mínimo de 30 días de aviso previo al cliente, notificado por WhatsApp o correo electrónico</li>
         <li>En caso de cancelación por parte de Nexia Studio sin causa imputable al cliente, se reintegrará de forma proporcional el monto del mes en curso no utilizado</li>
         <li>En caso de cancelación por incumplimiento de los Términos y Condiciones por parte del cliente (uso indebido, violación de políticas de Meta, etc.), no habrá devolución</li>
       </ul>
     </div>
 
-    <!-- 11 — NUEVO: Responsabilidad por datos correctos -->
+    <!-- 11 -->
     <div class="tyc-section">
       <span class="section-num">Sección 11</span>
       <h2>Responsabilidad por Información Proporcionada</h2>
@@ -337,7 +404,7 @@ footer a:hover{color:var(--pink)}
       </ul>
     </div>
 
-    <!-- 12 — NUEVO: Menores de edad -->
+    <!-- 12 -->
     <div class="tyc-section">
       <span class="section-num">Sección 12</span>
       <h2>Menores de Edad</h2>
@@ -358,23 +425,37 @@ footer a:hover{color:var(--pink)}
     <!-- 14 -->
     <div class="tyc-section">
       <span class="section-num">Sección 14</span>
-      <h2>Privacidad</h2>
+      <h2>Privacidad y Tratamiento de Datos</h2>
       <ul>
-        <li>Los datos de los usuarios finales (pacientes, clientes del negocio) se utilizan exclusivamente para el funcionamiento del servicio de agendamiento</li>
-        <li>No se comparten con terceros bajo ningún concepto</li>
+        <li>Los datos de los usuarios finales (pacientes, clientes del negocio) se utilizan exclusivamente para el funcionamiento del servicio de agendamiento y atención</li>
+        <li><strong>No se venden</strong> ni se ceden a terceros con fines comerciales o publicitarios</li>
+        <li>Para poder operar, el servicio se apoya en proveedores tecnológicos (encargados de tratamiento) que procesan datos por cuenta y bajo instrucción de Nexia Studio —entre ellos plataformas de mensajería, inteligencia artificial y alojamiento de datos—, quienes están obligados a la confidencialidad. Algunos de estos proveedores operan servidores fuera de Argentina</li>
+        <li>El detalle de qué datos se tratan, con qué finalidad y qué proveedores intervienen está en la <a href="privacidad.html">Política de Privacidad</a>, que forma parte de estos Términos</li>
       </ul>
     </div>
 
     <!-- 15 -->
     <div class="tyc-section">
       <span class="section-num">Sección 15</span>
-      <h2>Modificaciones al Servicio</h2>
-      <p>Nexia Studio puede modificar precios o funcionalidades del servicio con un mínimo de <strong>30 días de aviso previo</strong> al cliente, notificado por WhatsApp o correo electrónico.</p>
+      <h2>Datos Sensibles y de Salud</h2>
+      <p>Cuando el negocio contratante es un consultorio o profesional de la salud (por ejemplo, psicología), los datos de sus pacientes pueden constituir <strong>datos sensibles</strong> conforme a la normativa de protección de datos personales.</p>
+      <ul>
+        <li>El negocio contratante es el responsable de estos datos y de obtener el consentimiento informado de sus pacientes para su registro y tratamiento</li>
+        <li>Nexia Studio, como encargado del tratamiento, trata estos datos con confidencialidad reforzada y los utiliza únicamente para prestar el servicio</li>
+        <li>Nexia Studio no accede a estos datos con otro fin ni los comparte con terceros ajenos a la operación del servicio</li>
+      </ul>
     </div>
 
     <!-- 16 -->
     <div class="tyc-section">
       <span class="section-num">Sección 16</span>
+      <h2>Modificaciones al Servicio</h2>
+      <p>Nexia Studio puede modificar precios o funcionalidades del servicio con un mínimo de <strong>30 días de aviso previo</strong> al cliente, notificado por WhatsApp o correo electrónico.</p>
+    </div>
+
+    <!-- 17 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 17</span>
       <h2>Limitación de Responsabilidad</h2>
       <ul>
         <li>Nexia Studio no se hace responsable por pérdidas del negocio derivadas de fallas del servicio, interrupciones de Meta/WhatsApp, o causas fuera de su control</li>
@@ -382,9 +463,9 @@ footer a:hover{color:var(--pink)}
       </ul>
     </div>
 
-    <!-- 17 -->
+    <!-- 18 -->
     <div class="tyc-section">
-      <span class="section-num">Sección 17</span>
+      <span class="section-num">Sección 18</span>
       <h2>Ley Aplicable</h2>
       <p>El presente contrato se rige bajo la legislación de la <strong>República Argentina</strong>, independientemente del país de residencia del cliente.</p>
     </div>
@@ -392,33 +473,53 @@ footer a:hover{color:var(--pink)}
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <p>Nexia Studio © 2026 &nbsp;·&nbsp; <a href="index.html">neria.app</a> &nbsp;·&nbsp; <a href="mailto:samuel@nexiastudio.net">samuel@nexiastudio.net</a></p>
+  <p>Nexia Studio © 2026 &nbsp;·&nbsp; <a href="index.html">neria.app</a> &nbsp;·&nbsp; <a href="privacidad.html">Política de Privacidad</a> &nbsp;·&nbsp; <a href="mailto:samuel@nexiastudio.net">samuel@nexiastudio.net</a></p>
 </footer>
 
 <script>
+// Stars animation (same as landing)
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 let stars = [];
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-function initStars(){
-  stars=[];
-  for(let i=0;i<120;i++){
-    stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+0.3,o:Math.random()*0.6+0.1,s:Math.random()*0.3+0.05,d:Math.random()>0.5?1:-1});
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 120; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.2 + 0.3,
+      o: Math.random() * 0.6 + 0.1,
+      s: Math.random() * 0.3 + 0.05,
+      d: Math.random() > 0.5 ? 1 : -1
+    });
   }
 }
-function drawStars(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  stars.forEach(s=>{
-    s.o+=s.s*0.01*s.d;
-    if(s.o>0.7||s.o<0.1)s.d*=-1;
-    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(255,255,255,${s.o})`;ctx.fill();
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.o += s.s * 0.01 * s.d;
+    if (s.o > 0.7 || s.o < 0.1) s.d *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+    ctx.fill();
   });
   requestAnimationFrame(drawStars);
 }
-resize();initStars();drawStars();
-window.addEventListener('resize',()=>{resize();initStars()});
+
+resize();
+initStars();
+drawStars();
+window.addEventListener('resize', () => { resize(); initStars(); });
 </script>
 
 </body>
