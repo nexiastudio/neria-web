@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Política de Privacidad — Neria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0614;
+  --bg2:#150929;
+  --pink:oklch(0.72 0.22 350);
+  --pink-hot:oklch(0.68 0.28 8);
+  --violet:oklch(0.55 0.25 300);
+  --orange:oklch(0.72 0.18 50);
+  --gold:oklch(0.80 0.14 68);
+  --text:#ffffff;
+  --muted:#b0a8c8;
+  --dim:#6b6288;
+  --border:rgba(180,130,255,0.15);
+  --border-hi:rgba(200,150,255,0.3);
+  --card-bg:rgba(25,15,55,0.55);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,6,20,0.7);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 40px;
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--pink-hot),var(--violet));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px oklch(0.55 0.25 300 / 0.5);
+  font-size:18px;
+}
+.logo-text{font-size:22px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(180,130,255,0.08);color:var(--text);
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;
+  padding:10px 22px;border-radius:100px;border:1px solid var(--border-hi);
+  cursor:pointer;text-decoration:none;transition:all .25s;
+}
+.btn-ghost:hover{background:rgba(180,130,255,0.15);border-color:var(--pink)}
+
+/* STARS CANVAS */
+canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6}
+
+/* LAYOUT */
+.wrap{max-width:860px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+
+/* HERO */
+.hero{
+  padding:80px 0 60px;
+  text-align:center;
+  position:relative;z-index:1;
+}
+.label{
+  font-family:'Space Mono',monospace;font-size:11px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--orange);display:inline-block;margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(32px,5vw,52px);font-weight:800;
+  line-height:1.1;margin-bottom:16px;letter-spacing:-0.02em;
+}
+.accent{
+  background:linear-gradient(135deg,var(--pink) 0%,var(--violet) 60%,var(--orange) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-meta{
+  font-size:14px;color:var(--dim);font-family:'Space Mono',monospace;
+  margin-top:8px;
+}
+.hero-divider{
+  width:60px;height:2px;margin:32px auto 0;
+  background:linear-gradient(90deg,var(--pink),var(--violet));
+  border-radius:2px;
+}
+
+/* CONTENT */
+.content{padding:20px 0 100px}
+
+/* SECTION CARD */
+.tyc-section{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:20px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding:36px 40px;
+  margin-bottom:24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+  transition:border-color .3s;
+}
+.tyc-section:hover{border-color:var(--border-hi)}
+
+.section-num{
+  font-family:'Space Mono',monospace;font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--orange);display:block;margin-bottom:10px;
+}
+.tyc-section h2{
+  font-size:18px;font-weight:700;color:var(--text);
+  margin-bottom:20px;letter-spacing:-0.01em;
+}
+.tyc-section p{
+  font-size:14px;color:var(--muted);line-height:1.75;
+}
+.tyc-section p + p{margin-top:14px}
+.tyc-section a{color:var(--pink);text-decoration:none;border-bottom:1px solid rgba(200,150,255,0.3)}
+.tyc-section a:hover{color:var(--orange)}
+.tyc-section ul{
+  list-style:none;display:flex;flex-direction:column;gap:10px;
+}
+.tyc-section ul li{
+  font-size:14px;color:var(--muted);line-height:1.65;
+  padding-left:22px;position:relative;
+}
+.tyc-section ul li::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:6px;height:6px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--violet));
+}
+.tyc-section ul li strong{color:var(--text)}
+
+/* SUBLABEL */
+.sublabel{
+  font-size:13px;font-weight:600;color:var(--text);
+  margin:20px 0 10px;display:block;
+}
+
+/* NOTE */
+.note{
+  background:rgba(180,130,255,0.06);
+  border:1px solid var(--border);
+  border-left:3px solid var(--violet);
+  border-radius:0 12px 12px 0;
+  padding:14px 18px;margin-top:20px;
+  font-size:13px;color:var(--muted);line-height:1.65;
+}
+.note strong{color:var(--text)}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:40px 0;
+  text-align:center;
+  position:relative;z-index:1;
+}
+footer p{font-size:13px;color:var(--dim)}
+footer a{color:var(--muted);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--pink)}
+
+@media(max-width:768px){
+  .wrap{padding:0 20px}
+  .tyc-section{padding:24px 20px}
+  .nav-inner{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-mark">✦</div>
+      <span class="logo-text">Neria</span>
+    </a>
+    <a class="btn-ghost" href="index.html">← Volver al inicio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="hero">
+    <span class="label">Nexia Studio · Septiembre 2026</span>
+    <h1>Política de<br/><span class="accent">Privacidad</span></h1>
+    <p class="hero-meta">Última actualización: Septiembre 2026</p>
+    <div class="hero-divider"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- 1 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 01</span>
+      <h2>Responsable del tratamiento</h2>
+      <ul>
+        <li><strong>Responsable:</strong> Nexia Studio — Samuel Torres, monotributista</li>
+        <li><strong>Contacto:</strong> samuel@nexiastudio.net</li>
+        <li>Los datos fiscales completos (CUIT y domicilio) constan en la factura y se proporcionan al momento de la contratación.</li>
+      </ul>
+      <p>Esta política explica qué datos personales tratamos, con qué finalidad, con quién trabajamos para prestar el servicio y qué derechos tenés sobre tus datos. Aplica al sitio web y al servicio Neria (el "Servicio").</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 02</span>
+      <h2>A quién aplica</h2>
+      <p>Esta política cubre dos situaciones distintas:</p>
+      <ul>
+        <li><strong>Visitantes del sitio web:</strong> personas que nos escriben por el formulario de contacto o consultan por el servicio.</li>
+        <li><strong>Negocios clientes y sus usuarios finales:</strong> cuando un negocio contrata Neria, el Servicio procesa datos de ese negocio y de las personas que le escriben (sus clientes o pacientes).</li>
+      </ul>
+    </div>
+
+    <!-- 3 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 03</span>
+      <h2>Qué datos tratamos</h2>
+      <span class="sublabel">De los visitantes del sitio:</span>
+      <ul>
+        <li>Nombre, correo electrónico y el mensaje o consulta que nos envían.</li>
+      </ul>
+      <span class="sublabel">Del negocio cliente:</span>
+      <ul>
+        <li>Datos de registro y de contacto, datos de facturación, y la información de configuración del negocio (servicios, horarios, empleados, etc.).</li>
+      </ul>
+      <span class="sublabel">De los usuarios finales del negocio (sus clientes o pacientes):</span>
+      <ul>
+        <li>Nombre, número de teléfono y/o usuario de Instagram.</li>
+        <li>El contenido de las conversaciones (mensajes de texto y notas de voz), turnos, y comprobantes de pago que envíen.</li>
+        <li>Los datos que el negocio decida registrar en la ficha del cliente.</li>
+        <li>En el caso de consultorios de salud (por ejemplo, psicología): datos que pueden ser <strong>sensibles</strong>, como obra social o información vinculada a la atención. Ver la sección "Datos sensibles y de salud".</li>
+      </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 04</span>
+      <h2>Con qué finalidad los usamos</h2>
+      <ul>
+        <li><strong>Visitantes:</strong> únicamente para responder consultas comerciales.</li>
+        <li><strong>Servicio:</strong> exclusivamente para operar Neria — agendar y gestionar turnos, atender y responder a los usuarios finales, enviar recordatorios y generar las métricas del negocio.</li>
+        <li>No utilizamos los datos para publicidad, ni los vendemos, ni los cedemos con fines comerciales.</li>
+      </ul>
+    </div>
+
+    <!-- 5 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 05</span>
+      <h2>Nuestro rol: encargados del tratamiento</h2>
+      <p>Respecto de los datos de los usuarios finales, el <strong>negocio contratante es el responsable</strong> de esos datos: decide qué información recopila y para qué. Nexia Studio actúa como <strong>encargado del tratamiento</strong>, es decir, procesa esos datos por cuenta y bajo instrucción del negocio, con el único fin de prestar el Servicio.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 06</span>
+      <h2>Proveedores que intervienen (encargados)</h2>
+      <p>Para funcionar, Neria se apoya en proveedores tecnológicos que procesan datos por cuenta de Nexia Studio, obligados a la confidencialidad y a usarlos solo para prestar su parte del servicio:</p>
+      <ul>
+        <li><strong>Meta (WhatsApp e Instagram):</strong> canal por el que se reciben y envían los mensajes.</li>
+        <li><strong>Proveedores de inteligencia artificial:</strong> para generar las respuestas y transcribir las notas de voz.</li>
+        <li><strong>Proveedor de alojamiento y base de datos:</strong> donde se guarda la información del servicio.</li>
+        <li><strong>Google</strong> (Calendar, Sheets, Gmail), <strong>servicio de envío de correos</strong> y <strong>Mercado Pago</strong>: únicamente si el negocio activa esas integraciones.</li>
+      </ul>
+      <div class="note">
+        <strong>Transferencia internacional:</strong> algunos de estos proveedores operan servidores fuera de Argentina, por lo que los datos pueden alojarse o procesarse en el exterior con los debidos resguardos de confidencialidad.
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 07</span>
+      <h2>Datos sensibles y de salud</h2>
+      <p>Cuando el negocio es un consultorio o profesional de la salud, los datos de sus pacientes pueden ser <strong>datos sensibles</strong>, con protección reforzada.</p>
+      <ul>
+        <li>El negocio contratante es responsable de obtener el <strong>consentimiento informado</strong> de sus pacientes para el registro y tratamiento de estos datos.</li>
+        <li>Nexia Studio los trata con confidencialidad reforzada, solo para prestar el Servicio, y no los comparte con terceros ajenos a su operación.</li>
+      </ul>
+    </div>
+
+    <!-- 8 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 08</span>
+      <h2>Cuánto tiempo los conservamos</h2>
+      <ul>
+        <li>Mientras el Servicio esté activo, los datos se conservan para operar.</li>
+        <li>Si el negocio cancela, los datos se guardan <strong>60 días</strong> por si desea reactivar; luego se eliminan definitivamente.</li>
+        <li>Los comprobantes de pago se borran a los 30 días de resuelto el turno asociado.</li>
+        <li>Los registros de mensajes se depuran periódicamente para no conservar históricos más allá de lo necesario.</li>
+      </ul>
+    </div>
+
+    <!-- 9 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 09</span>
+      <h2>Seguridad</h2>
+      <p>Aplicamos medidas razonables para proteger los datos: control de accesos por rol en el servidor, verificación de la autenticidad de los mensajes entrantes (webhooks firmados) y borrado automático de la información que ya no se necesita. Ningún sistema es 100% infalible, pero trabajamos para reducir los riesgos.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 10</span>
+      <h2>Tus derechos</h2>
+      <p>Tenés derecho a solicitar el <strong>acceso, la rectificación o la supresión</strong> de tus datos personales en cualquier momento.</p>
+      <ul>
+        <li>Si sos visitante o negocio cliente, escribinos a <a href="mailto:samuel@nexiastudio.net">samuel@nexiastudio.net</a>.</li>
+        <li>Si sos usuario final de un negocio (su cliente o paciente), podés ejercer tus derechos a través de ese negocio, que es el responsable de tus datos; también podés escribirnos y te ayudamos a canalizar el pedido.</li>
+      </ul>
+      <p>Responderemos dentro de un plazo razonable. La Agencia de Acceso a la Información Pública (AAIP) es el organismo de control en materia de datos personales en Argentina y ante ella podés presentar reclamos.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 11</span>
+      <h2>Menores de edad</h2>
+      <p>Cuando los usuarios finales sean menores de edad, es responsabilidad del negocio contratante obtener el consentimiento de sus padres, tutores o representantes legales. Nexia Studio no interviene en ese proceso.</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 12</span>
+      <h2>Cookies y sitio web</h2>
+      <p>El sitio web utiliza únicamente los recursos necesarios para su funcionamiento y la carga de tipografías. No usamos cookies de publicidad ni de seguimiento de terceros con fines comerciales.</p>
+    </div>
+
+    <!-- 13 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 13</span>
+      <h2>Cambios en esta política</h2>
+      <p>Podemos actualizar esta Política de Privacidad para reflejar mejoras del servicio o cambios normativos. Publicaremos la versión vigente en esta página con su fecha de última actualización.</p>
+    </div>
+
+    <!-- 14 -->
+    <div class="tyc-section">
+      <span class="section-num">Sección 14</span>
+      <h2>Contacto</h2>
+      <p>Ante cualquier duda sobre esta política o sobre el tratamiento de tus datos, escribinos a <a href="mailto:samuel@nexiastudio.net">samuel@nexiastudio.net</a>.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Nexia Studio © 2026 &nbsp;·&nbsp; <a href="index.html">neria.app</a> &nbsp;·&nbsp; <a href="tyc.html">Términos y Condiciones</a> &nbsp;·&nbsp; <a href="mailto:samuel@nexiastudio.net">samuel@nexiastudio.net</a></p>
+</footer>
+
+<script>
+// Stars animation (same as landing)
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 120; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.2 + 0.3,
+      o: Math.random() * 0.6 + 0.1,
+      s: Math.random() * 0.3 + 0.05,
+      d: Math.random() > 0.5 ? 1 : -1
+    });
+  }
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.o += s.s * 0.01 * s.d;
+    if (s.o > 0.7 || s.o < 0.1) s.d *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+
+resize();
+initStars();
+drawStars();
+window.addEventListener('resize', () => { resize(); initStars(); });
+</script>
+
+</body>
+</html>
